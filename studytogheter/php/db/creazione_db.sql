@@ -1,5 +1,5 @@
 CREATE DATABASE IF NOT EXISTS studytogether;
-USE study_groups;
+USE studytogether;
 
 CREATE TABLE IF NOT EXISTS user (
     id INT AUTO_INCREMENT PRIMARY KEY,
