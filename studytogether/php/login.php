@@ -12,7 +12,7 @@
     </header>
 
     <main class="login-container">
-        <form class="login-box">
+        <form class="login-box" action="home.php">
             <input type="text" name="username" placeholder="EMAIL / USERNAME" required>
 
             <input type="password" name="password" placeholder="PASSWORD" required>
