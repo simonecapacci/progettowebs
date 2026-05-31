@@ -219,6 +219,39 @@ body {
     font-size: 18px;
 }
 
+.my-groups-container {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px;
+}
+
+.groups-column {
+    width: 430px;
+}
+
+.groups-title {
+    height: 55px;
+    background-color: #536df5;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px 8px 0 0;
+    font-size: 16px;
+}
+
+.group-row {
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8px;
+    font-size: 16px;
+}
+
 @media (max-width: 900px) {
     .search-layout {
         grid-template-columns: 1fr;
