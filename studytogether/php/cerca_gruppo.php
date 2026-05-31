@@ -33,6 +33,11 @@ for ($day = 1; $day <= $daysInMonth; $day++) {
 while (count($calendarCells) % 7 !== 0) {
     $calendarCells[] = null;
 }
+
+$subjects = [];
+if (isset($dbh) && method_exists($dbh, 'getSubjects')) {
+    $subjects = $dbh->getSubjects();
+}
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -52,12 +57,18 @@ while (count($calendarCells) % 7 !== 0) {
             <details class="subject-filter" open>
                 <summary>Filtra per materia</summary>
                 <div class="subject-list">
-                    <label><input type="checkbox" name="subject[]" value="Analisi"> Analisi</label>
-                    <label><input type="checkbox" name="subject[]" value="Programmazione"> Programmazione</label>
-                    <label><input type="checkbox" name="subject[]" value="Fisica"> Fisica</label>
-                    <label><input type="checkbox" name="subject[]" value="Chimica"> Chimica</label>
-                    <label><input type="checkbox" name="subject[]" value="Basi di Dati"> Basi di Dati</label>
-                    <label><input type="checkbox" name="subject[]" value="Tecnologie Web"> Tecnologie Web</label>
+                    <?php if (!empty($subjects)): ?>
+                        <?php foreach ($subjects as $subject): ?>
+                            <label>
+                                <input type="checkbox" name="subject[]" value="<?php echo htmlspecialchars($subject['name'], ENT_QUOTES, 'UTF-8'); ?>">
+                                <?php echo htmlspecialchars($subject['name'], ENT_QUOTES, 'UTF-8'); ?>
+                            </label>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <label><input type="checkbox" name="subject[]" value="Analisi"> Analisi</label>
+                        <label><input type="checkbox" name="subject[]" value="Programmazione"> Programmazione</label>
+                        <label><input type="checkbox" name="subject[]" value="Basi di Dati"> Basi di Dati</label>
+                    <?php endif; ?>
                 </div>
             </details>
 
