@@ -10,7 +10,7 @@
     <header class="top-bar">
         <h1>STUDY GROUPS</h1>
     </header>
-     <main class="my-groups-container">
+     <main class="groups-container">
 
     <section class="groups-column">
         <div class="groups-title">SESSIONI ISCRITTO</div>

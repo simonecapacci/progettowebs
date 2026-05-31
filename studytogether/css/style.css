@@ -346,6 +346,32 @@ body.create-page .create-box button:hover {
     box-shadow: 0 12px 22px rgba(83, 109, 245, 0.26);
 }
 
+.groups-container {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px;
+}
+.groups-column{
+    width:400px;
+}
+
+.groups-title{
+    background:#536df5;
+    color:white;
+    text-align:center;
+    padding:15px;
+    border-radius:8px 8px 0 0;
+}
+
+.group-row{
+    background:white;
+    text-align:center;
+    padding:15px;
+    margin-top:8px;
+}
+
 @media (max-width: 900px) {
     .search-layout {
         grid-template-columns: 1fr;
