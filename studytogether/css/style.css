@@ -460,3 +460,114 @@ form{
     height:55px;
     border-radius:10px;
 }
+
+
+body.admin-page {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #eaeaea 0%, #f5f7fb 100%);
+}
+
+body.admin-page .admin-container {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 32px 20px;
+}
+
+body.admin-page .admin-card {
+    width: min(900px, 100%);
+    overflow: hidden;
+    border-radius: 22px;
+    background: #ffffff;
+    box-shadow: 0 18px 40px rgba(16, 24, 40, 0.12);
+    border: 1px solid rgba(83, 109, 245, 0.12);
+}
+
+body.admin-page .admin-card-head {
+    padding: 26px 28px 22px;
+    background: linear-gradient(135deg, #35aeea 0%, #62c3f4 100%);
+    color: #08111d;
+}
+
+body.admin-page .admin-card-head p {
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+body.admin-page .admin-card-head h2 {
+    font-size: 30px;
+    line-height: 1.05;
+    margin-bottom: 10px;
+}
+
+body.admin-page .admin-card-head span {
+    display: block;
+    max-width: 44rem;
+    font-size: 15px;
+    line-height: 1.5;
+    opacity: 0.95;
+}
+
+body.admin-page .admin-list {
+    display: grid;
+    gap: 14px;
+    padding: 26px 28px 28px;
+    background: #f8f8f8;
+}
+
+body.admin-page .admin-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(17, 17, 17, 0.06);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+body.admin-page .admin-row h3 {
+    font-size: 18px;
+    color: #111;
+}
+
+body.admin-page .admin-action {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+    height: 44px;
+    padding: 0 18px;
+    border-radius: 12px;
+    background: #536df5;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.15s ease, filter 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 10px 18px rgba(83, 109, 245, 0.22);
+}
+
+body.admin-page .admin-action:hover,
+body.admin-page .admin-action:focus-visible {
+    transform: translateY(-1px);
+    filter: brightness(1.04);
+    outline: none;
+}
+
+@media (max-width: 900px) {
+    body.admin-page .admin-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    body.admin-page .admin-action {
+        width: 100%;
+    }
+}

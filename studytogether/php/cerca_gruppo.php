@@ -38,6 +38,11 @@ $subjects = [];
 if (isset($dbh) && method_exists($dbh, 'getSubjects')) {
     $subjects = $dbh->getSubjects();
 }
+
+$groups = [];
+if (isset($dbh) && method_exists($dbh, 'getGroups')) {
+    $groups = $dbh->getGroups();
+}
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -73,23 +78,20 @@ if (isset($dbh) && method_exists($dbh, 'getSubjects')) {
             </details>
 
             <section class="results-list" aria-label="Risultati della ricerca">
-                <a class="result-card" href="info_gruppo.php" aria-label="Apri il gruppo Studio Algebra">
-                    <h2>Gruppo Studio Algebra</h2>
-                    <p>Materia: Analisi</p>
-                    <p>Mercoledì ore 15:00</p>
-                </a>
-
-                <a class="result-card" href="info_gruppo.php" aria-label="Apri il gruppo Web Dev Team">
-                    <h2>Web Dev Team</h2>
-                    <p>Materia: Tecnologie Web</p>
-                    <p>Giovedì ore 18:30</p>
-                </a>
-
-                <a class="result-card" href="info_gruppo.php" aria-label="Apri il gruppo Database Sprint">
-                    <h2>Database Sprint</h2>
-                    <p>Materia: Basi di Dati</p>
-                    <p>Venerdì ore 11:00</p>
-                </a>
+                <?php if (!empty($groups)): ?>
+                    <?php foreach ($groups as $group): ?>
+                        <a class="result-card" href="info_gruppo.php?id=<?php echo urlencode($group['id']); ?>" aria-label="Apri il gruppo <?php echo htmlspecialchars($group['name'], ENT_QUOTES, 'UTF-8'); ?>">
+                            <h2><?php echo htmlspecialchars($group['name'], ENT_QUOTES, 'UTF-8'); ?></h2>
+                            <p>Materia: <?php echo htmlspecialchars($group['subject_name'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p><?php echo htmlspecialchars($group['date'], ENT_QUOTES, 'UTF-8'); ?> - <?php echo htmlspecialchars($group['time'], ENT_QUOTES, 'UTF-8'); ?></p>
+                        </a>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="result-card">
+                        <h2>Nessun gruppo trovato</h2>
+                        <p>Al momento non ci sono gruppi nel database.</p>
+                    </div>
+                <?php endif; ?>
             </section>
         </section>
 
