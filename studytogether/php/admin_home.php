@@ -6,7 +6,7 @@ require_once __DIR__ . '/bootstrap.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudyGroups</title>
+    <title>Admin_home</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
