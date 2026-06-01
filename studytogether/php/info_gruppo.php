@@ -27,40 +27,39 @@ $group = [
     </header>
     
     <main class="group-layout">
+
         <section class="group-card">
 
-            <h2>
-                <?php echo htmlspecialchars($group['materia']); ?>
-            </h2>
+            <div class="group-card-head">
+                <h2><?php echo htmlspecialchars($group['materia']); ?></h2>
+            </div>
 
-            <p class="group-organizer">
-                <?php echo htmlspecialchars($group['organizzatore']); ?>
-            </p>
+            <div class="group-card-body">
 
-            <p class="group-date">
-                <?php echo $group['data']; ?>
-                -
-                <?php echo $group['ora']; ?>
-                (<?php echo $group['durata']; ?>)
-            </p>
+                <div class="row">
+                    <span class="label">Organizzatore</span>
+                    <span class="value"><?php echo htmlspecialchars($group['organizzatore']); ?></span>
+                </div>
 
-            <p class="group-description">
-                <?php echo htmlspecialchars($group['descrizione']); ?>
-            </p>
+                <div class="row">
+                    <span class="label">Data / Ora</span>
+                    <span class="value">
+                        <?php echo $group['data']; ?> - <?php echo $group['ora']; ?>
+                        (<?php echo $group['durata']; ?>)
+                    </span>
+                </div>
 
-            <p class="group-members">
-                Partecipanti: <?php echo $group['partecipanti']; ?>
-            </p>
+                <div class="description">
+                    <?php echo htmlspecialchars($group['descrizione']); ?>
+                </div>
 
+                <div class="participants">
+                    Numero partecipanti: <?php echo $group['partecipanti']; ?>
+                </div>
 
+            </div>
 
         </section>
-
-        <form action="iscriviti.php" method="post">
-            <button class="home-button">
-                ISCRIVITI
-            </button>
-        </form>
 
     </main>
 </body>

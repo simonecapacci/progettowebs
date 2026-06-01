@@ -381,3 +381,82 @@ body.create-page .create-box button:hover {
         order: -1;
     }
 }
+
+.group-layout{
+    min-height: calc(100vh - 100px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+/* CARD CENTRATA */
+.group-card{
+    width: 700px;
+    background:white;
+    border-radius:16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow:hidden;
+}
+
+/* HEADER BLU */
+.group-card-head{
+    background:#536df5;
+    color:white;
+    text-align:center;
+    padding:18px;
+}
+
+.group-card-head h2{
+    font-size:22px;
+}
+
+/* BODY */
+.group-card-body{
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+/* RIGHE 2 COLONNE */
+.row{
+    display:flex;
+    justify-content:space-between;
+    font-size:15px;
+}
+
+.label{
+    font-weight:bold;
+}
+
+.value{
+    color:#333;
+}
+
+/* DESCRIZIONE CENTRATA */
+.description{
+    text-align:center;
+    margin-top:10px;
+    color:#444;
+}
+
+/* PARTICIPANTI IN BASSO DESTRA */
+.participants{
+    text-align:right;
+    font-size:14px;
+    color:#666;
+}
+
+/* BOTTONE */
+form{
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
+}
+
+.home-button{
+    width:200px;
+    height:55px;
+    border-radius:10px;
+}
