@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - StudyGroups</title>
+    <title>Sign Up - StudyTogether</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/signup.css">
 
 </head>
 <body>
@@ -16,36 +16,36 @@
             <button type="button">ACCEDI</button>
             <button type="button">REGISTRATI</button>
         </nav>
-
     </header>
 
-    <main class="login-page">
-        
-        <div class="login-card">
-            <h2>ACCEDI</h2>
+    <main class="login-container">
 
-            <form class="login-form" action="home.php">
+        <div class="login-card">
+            <h2>REGISTRATI</h2>
+
+            <form class="login-box" action="home.php">
                 
                 <input type="text" name="username" placeholder="EMAIL / USERNAME" required>
 
+                <input type="email" name="email" placeholder="EMAIL" required>
+
                 <input type="password" name="password" placeholder="PASSWORD" required>
 
-                <button type="submit">ACCEDI</button>
+                <button type="submit">REGISTRATI</button>
 
             </form>
 
             <section class="signup-area">
-                <p>Non hai un account?</p>
 
                 <p class="signup-row">
-                    <span>allora:</span>
+                    <span>Hai già un'account?</span>
 
-                    <button type="button">REGISTRATI</button>
+                    <button type="button">ACCEDI</button>
                 </p>
             </section>
 
         </div>
-
+        
     </main>
 </body>
 </html>
