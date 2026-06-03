@@ -31,7 +31,7 @@ $navbarType = $navbarType ?? 'guest';
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="signup.php">Registrati</a>
+                        <a href="signup.php" class="btn btn-outline-light">Registrati</a>
                     </li>
 
                 <?php elseif ($navbarType === 'user'): ?>
