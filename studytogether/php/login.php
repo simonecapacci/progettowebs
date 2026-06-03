@@ -45,7 +45,7 @@ require_once __DIR__ . '/bootstrap.php';
                             ACCEDI
                         </h2>
 
-                        <form action="signup.php" method="post">
+                        <form action="home.php" method="post">
                             
                             <div class="mb-3">
                                 <label for="email" class="form-lable">

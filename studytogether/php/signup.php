@@ -64,7 +64,7 @@ require_once __DIR__ . '/bootstrap.php';
                         </p>
 
                         <form action="login.php" method="get">
-                            <button type="button" class="btn btn-outline-primary w-100">
+                            <button type="button" action="login.php" class="btn btn-outline-primary w-100">
                                 Accedi
                             </button>
                         </form>
