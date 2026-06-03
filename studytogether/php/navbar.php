@@ -1,3 +1,7 @@
+<?php
+$navbarType = $navbarType ?? 'guest';
+?>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
     <div class="container">
 
@@ -16,18 +20,51 @@
         <div class="collapse navbar-collapse" id="navbarMenu">
 
             <ul class="navbar-nav ms-4">
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="home.php">Home</a>
-                </li>
+                <?php if ($navbarType === 'guest'): ?>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php">Accedi</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Index</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="signup.php">Registrati</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.php">Accedi</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="signup.php">Registrati</a>
+                    </li>
+
+                <?php elseif ($navbarType === 'user'): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.php">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="search_group.php">Cerca Gruppo</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="my_groups.php">I Mie Gruppi</a>
+                    </li>
+
+                <?php elseif ($navbarType === 'admin'): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.php">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="search_group.php">Cerca Gruppo</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="my_groups.php">I Mie Gruppi</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin_home.php">Admin Home</a>
+                    </li>
+
+                <?php endif; ?>
 
             </ul>
 

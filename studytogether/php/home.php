@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
+
+$navbarType = 'user';
+
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +41,7 @@ require_once __DIR__ . '/bootstrap.php';
                     <p class="text-muted">
                         Trova gruppi disponibili filtrando per materia.
                     </p>
-                    <a href="cerca_gruppo.php" class="btn btn-study w-100">
+                    <a href="search_group.php" class="btn btn-study w-100">
                         CERCA GRUPPO
                     </a>
                 </div>
@@ -52,7 +55,7 @@ require_once __DIR__ . '/bootstrap.php';
                     <p class="text-muted">
                         Crea un nuovo gruppo di studio e organizza un incontro.
                     </p>
-                    <a href="crea_gruppo.php" class="btn btn-study w-100">
+                    <a href="create_group.php" class="btn btn-study w-100">
                         CREA GRUPPO
                     </a>
                 </div>

@@ -10,6 +10,9 @@ $groups = [];
 if (isset($dbh) && method_exists($dbh, 'getGroups')) {
     $groups = $dbh->getGroups();
 }
+
+$navbarType = 'user';
+
 ?>
 <!DOCTYPE html>
 <html lang="it">

@@ -1,5 +1,7 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
+
+$navbarType = 'guest';
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -31,7 +33,7 @@ require_once __DIR__ . '/bootstrap.php';
                     Accedi
                 </a>
 
-                <a href="registrazione.php" class="btn btn-outline-primary px-5">
+                <a href="signup.php" class="btn btn-outline-primary px-5">
                     Registrati
                 </a>
             </div>

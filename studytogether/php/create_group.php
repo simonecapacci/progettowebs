@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
+
+$navbarType = 'user';
+
 ?>
 <!DOCTYPE html>
 <html lang="it">

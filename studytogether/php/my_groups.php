@@ -1,5 +1,8 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
+
+$navbarType = 'user';
+
 ?>
 
 <!DOCTYPE html>
@@ -16,17 +19,7 @@ require_once __DIR__ . '/bootstrap.php';
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-info py-4">
-    <div class="container-fluid px-5">
-        <a class="navbar-brand fw-bold fs-1 text-black" href="home.php">
-            STUDY GROUPS
-        </a>
-
-        <div class="d-flex gap-2">
-            <a href="home.php" class="btn btn-study">HOME</a>
-        </div>
-    </div>
-</nav>
+<?php require_once 'navbar.php'; ?>
 
 <main class="container py-5">
 
