@@ -1,51 +1,94 @@
+<?php
+require_once __DIR__ . '/bootstrap.php';
+?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Login - StudyGroups</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/login.css">
 
 </head>
+
 <body>
-    <header class="top-bar">
-        <h1>STUDY GROUPS</h1>
 
-        <nav class="top-actions">
-            <button type="button">ACCEDI</button>
-            <button type="button">REGISTRATI</button>
-        </nav>
+<header class="top-bar d-flex align-items-center justify-content-between px-5">
 
-    </header>
+    <h1>STUDY GROUPS</h1>
 
-    <main class="login-page">
-        
-        <div class="login-card">
-            <h2>ACCEDI</h2>
+    <div>
+        <a href="login.php" class="btn btn-study me-2">
+            ACCEDI
+        </a>
 
-            <form class="login-form" action="home.php">
-                
-                <input type="text" name="username" placeholder="EMAIL / USERNAME" required>
+        <a href="registrazione.php" class="btn btn-study">
+            REGISTRATI
+        </a>
+    </div>
 
-                <input type="password" name="password" placeholder="PASSWORD" required>
+</header>
 
-                <button type="submit">ACCEDI</button>
+<div class="container">
 
-            </form>
+    <div class="row justify-content-center mt-5">
 
-            <section class="signup-area">
-                <p>Non hai un account?</p>
+        <div class="col-auto">
 
-                <p class="signup-row">
-                    <span>allora:</span>
+            <div class="login-card text-center">
 
-                    <button type="button">REGISTRATI</button>
-                </p>
-            </section>
+                <h2 class="fw-bold mb-5">
+                    ACCEDI
+                </h2>
+
+
+    <div class="mb-3">
+        <input
+            type="text"
+            class="form-control"
+            placeholder="EMAIL / USERNAME">
+    </div>
+
+    <div class="mb-4">
+        <input
+            type="password"
+            class="form-control"
+            placeholder="PASSWORD">
+    </div>
+
+    <div class="text-center">
+        <form action="home.php">
+            <button type="submit" class="btn btn-study px-5">
+                ACCEDI
+            </button>
+        </form>
+    </div>
+
+                <div class="mt-4">
+
+                    <p class="mb-2">
+                        Non hai un account?
+                    </p>
+
+                    <a href="signup.php"
+                       class="btn btn-study btn-sm">
+                        REGISTRATI
+                    </a>
+
+                </div>
+
+            </div>
 
         </div>
 
-    </main>
+    </div>
+
+</div>
+
 </body>
 </html>
+
