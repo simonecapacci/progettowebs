@@ -75,11 +75,10 @@ require_once __DIR__ . '/bootstrap.php';
                             non hai un account?
                         </p>
 
-                        <form action="signup.php" method="get">
-                            <button type="button" class="btn btn-outline-primary w-100">
+                        
+                        <a href="signup.php" class="btn btn-outline-primary w-100">
                                 Registrati
-                            </button>
-                        </form>
+                        </a>
 
                     </div>
                 </div>
