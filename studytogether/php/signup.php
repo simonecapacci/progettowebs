@@ -19,7 +19,7 @@ require_once __DIR__ . '/bootstrap.php';
 
     <main class="container py-5">
 
-        <div class="row justify-container-center">
+        <div class="row justify-content-center">
 
             <div class="col-mp-6 col-lg-4">
 
@@ -29,7 +29,7 @@ require_once __DIR__ . '/bootstrap.php';
                             Registrati
                         </h2>
 
-                        <form action="signup.php" method="post">
+                        <form action="home.php" method="post">
                             <div class="mb-3">
                                 <label for="username" class="form-lable">
                                     Username
