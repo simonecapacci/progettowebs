@@ -14,10 +14,10 @@ $navbarType = 'guest';
     <link rel="stylesheet" href="../css/style.css">
 
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <?php require_once 'navbar.php'; ?>
 
-    <main class="container py-5">
+    <main class="container py-5 flex-grow-1">
 
         <div class="row justify-content-center">
 
@@ -75,6 +75,8 @@ $navbarType = 'guest';
         </div>
         
     </main>
+
+    <?php require_once 'footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

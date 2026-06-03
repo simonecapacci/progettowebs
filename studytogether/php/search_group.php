@@ -24,10 +24,10 @@ $navbarType = 'user';
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/components.css">
 </head>
-<body class="search-page bg-body-tertiary">
+<body class="search-page bg-body-tertiary d-flex flex-column min-vh-100">
     <?php require_once 'navbar.php'; ?>
 
-    <main class="container-fluid py-3 py-lg-4">
+    <main class="container-fluid py-3 py-lg-4 flex-grow-1">
         <div class="row g-3 g-lg-4">
             <div class="col-12 col-lg-4 col-xl-3">
                 <div class="card border-0 shadow-sm h-100">
@@ -109,7 +109,7 @@ $navbarType = 'user';
             </div>
         </div>
     </main>
-
+    <?php require_once 'footer.php'; ?>             
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

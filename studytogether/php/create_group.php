@@ -13,10 +13,10 @@ $navbarType = 'user';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="bg-body-tertiary">
+<body class="bg-body-tertiary d-flex flex-column min-vh-100">
     <?php require_once 'navbar.php'; ?>
 
-    <main class="container py-4 py-lg-5">
+    <main class="container py-4 py-lg-5 flex-grow-1">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10 col-xl-8">
                 <div class="card border-0 shadow-sm overflow-hidden">
@@ -63,6 +63,7 @@ $navbarType = 'user';
         </div>
     </main>
 
+    <?php require_once 'footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
