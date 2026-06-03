@@ -176,3 +176,19 @@ body {
     background:#4055d6;
 }
 
+/* my groups*/
+.btn-study {
+    background-color: #536dfe;
+    color: white;
+    border: none;
+    font-weight: 600;
+}
+
+.btn-study:hover {
+    background-color: #4055d6;
+    color: white;
+}
+
+.card-header {
+    background-color: #536dfe !important;
+}
