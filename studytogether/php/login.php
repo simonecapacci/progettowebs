@@ -33,61 +33,61 @@ require_once __DIR__ . '/bootstrap.php';
 
 </header>
 
-<div class="container">
+<main class="container py-5">
 
-    <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center">
 
-        <div class="col-auto">
+            <div class="col-mp-6 col-lg-4">
 
-            <div class="login-card text-center">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h2 class="text-center fw-bold mb-4">
+                            ACCEDI
+                        </h2>
 
-                <h2 class="fw-bold mb-5">
-                    ACCEDI
-                </h2>
+                        <form action="signup.php" method="post">
+                            
+                            <div class="mb-3">
+                                <label for="email" class="form-lable">
+                                    Email
+                                </label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="EMAIL" required>
 
+                            </div>
 
-    <div class="mb-3">
-        <input
-            type="text"
-            class="form-control"
-            placeholder="EMAIL / USERNAME">
-    </div>
+                            <div class="mb-4">
+                                <label for="password" class="form-lable">
+                                    Password
+                                </label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="PASSWORD" required>
 
-    <div class="mb-4">
-        <input
-            type="password"
-            class="form-control"
-            placeholder="PASSWORD">
-    </div>
+                            </div>
 
-    <div class="text-center">
-        <form action="home.php">
-            <button type="submit" class="btn btn-study px-5">
-                ACCEDI
-            </button>
-        </form>
-    </div>
+                            <form action="home.php" method="get">
+                                <button type="submit" class="btn btn-primary w-100">
+                                     Accedi
+                                </button>
+                            </form>
 
-                <div class="mt-4">
+                        <hr>
 
-                    <p class="mb-2">
-                        Non hai un account?
-                    </p>
+                        <p class="text-center mb-0">
+                            non hai un account?
+                        </p>
 
-                    <a href="signup.php"
-                       class="btn btn-study btn-sm">
-                        REGISTRATI
-                    </a>
+                        <form action="signup.php" method="get">
+                            <button type="button" class="btn btn-outline-primary w-100">
+                                Registrati
+                            </button>
+                        </form>
 
+                    </div>
                 </div>
-
             </div>
 
         </div>
-
-    </div>
-
-</div>
+        
+    </main>
 
 </body>
 </html>
