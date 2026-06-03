@@ -13,7 +13,7 @@ body {
     height: 100px;
     background-color: #35aeea;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
@@ -21,6 +21,7 @@ body {
     font-size: 42px;
     font-weight: bold;
     color: black;
+    margin-left: 5px;
 }
 
 .login-container {
