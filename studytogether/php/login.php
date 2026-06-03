@@ -52,11 +52,11 @@ $navbarType = 'guest';
 
                             </div>
 
-                            <form action="home.php" method="get">
-                                <button type="submit" class="btn btn-primary w-100">
-                                     Accedi
-                                </button>
-                            </form>
+
+                            <button type="submit" class="btn btn-primary w-100">
+                                Accedi
+                            </button>
+
 
                         <hr>
 
