@@ -22,9 +22,7 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
     <link rel="stylesheet" href="../css/components.css">
 </head>
 <body class="search-page bg-body-tertiary">
-    <header class="top-bar">
-        <h1>STUDY GROUPS</h1>
-    </header>
+    <?php require_once 'navbar.php'; ?>
 
     <main class="container-fluid py-3 py-lg-4">
         <div class="row g-3 g-lg-4">

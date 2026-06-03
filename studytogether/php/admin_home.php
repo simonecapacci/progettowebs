@@ -20,14 +20,7 @@ function h(string $value): string
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header class="top-bar">
-        <div class="container-fluid py-3">
-            <div class="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3">
-                <a class="text-decoration-none text-white fw-bold fs-4" href="admin_home.php">StudyGroups</a>
-                <a class="btn btn-outline-light" href="index.php">Esci</a>
-            </div>
-        </div>
-    </header>
+    <?php require_once 'navbar.php'; ?>
 
     <main class="container py-4 py-md-5">
         <div class="row justify-content-center">

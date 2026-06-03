@@ -11,9 +11,7 @@ require_once __DIR__ . '/bootstrap.php';
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-body-tertiary">
-    <header class="top-bar">
-        <h1>STUDY GROUPS</h1>
-    </header>
+    <?php require_once 'navbar.php'; ?>
 
     <main class="container py-4 py-lg-5">
         <div class="row justify-content-center">

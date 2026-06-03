@@ -14,9 +14,7 @@ require_once __DIR__ . '/bootstrap.php';
 
 <body>
 
-<header class="top-bar text-center">
-    <h1>STUDY GROUPS</h1>
-</header>
+<?php require_once 'navbar.php'; ?>
 
 <main class="container py-5">
 
@@ -78,6 +76,6 @@ require_once __DIR__ . '/bootstrap.php';
     </section>
 
 </main>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
