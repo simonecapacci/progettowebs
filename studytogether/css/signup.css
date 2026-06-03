@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eaeaea;
+}
+
+.top-bar {
+    height: 100px;
+    background-color: #35aeea;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.top-bar h1 {
+    font-size: 42px;
+    font-weight: bold;
+    margin: 0;
+}

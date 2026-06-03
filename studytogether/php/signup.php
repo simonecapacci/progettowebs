@@ -1,48 +1,77 @@
+<?php
+require_once __DIR__ . '/bootstrap.php';
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - StudyTogether</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/signup.css">
 
 </head>
 <body>
-    <header class="top-bar">
+    <header class="top-bar text-center">
         <h1>STUDY GROUPS</h1>
 
-        <nav class="top-actions">
-            <button type="button">ACCEDI</button>
-            <button type="button">REGISTRATI</button>
-        </nav>
     </header>
 
-    <main class="login-container">
+    <main class="container py-5">
 
-        <div class="login-card">
-            <h2>REGISTRATI</h2>
+        <div class="row justify-container-center">
 
-            <form class="login-box" action="home.php">
-                
-                <input type="text" name="username" placeholder="EMAIL / USERNAME" required>
+            <div class="col-mp-6 col-lg-4">
 
-                <input type="email" name="email" placeholder="EMAIL" required>
+                <div class="card shadow-sm border-0">
+                    <div class="card-body p-4">
+                        <h2 class="text-center fw-bold mb-4">
+                            Registrati
+                        </h2>
 
-                <input type="password" name="password" placeholder="PASSWORD" required>
+                        <form action="signup.php" method="post">
+                            <div class="mb-3">
+                                <label for="username" class="form-lable">
+                                    Username
+                                </label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="USERNAME" required>
 
-                <button type="submit">REGISTRATI</button>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-lable">
+                                    Email
+                                </label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="EMAIL" required>
 
-            </form>
+                            </div>
 
-            <section class="signup-area">
+                            <div class="mb-4">
+                                <label for="password" class="form-lable">
+                                    Password
+                                </label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="PASSWORD" required>
 
-                <p class="signup-row">
-                    <span>Hai già un'account?</span>
+                            </div>
 
-                    <button type="button">ACCEDI</button>
-                </p>
-            </section>
+                            <button type="submit" class="btn btn-primary w-100">Registrati</button>
+
+                        </form>
+
+                        <hr>
+
+                        <p class="text-center mb-0">
+                            Hai già un account?
+                        </p>
+
+                        <form action="login.php" method="get">
+                            <button type="button" class="btn btn-outline-primary w-100">
+                                Accedi
+                            </button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
 
         </div>
         
