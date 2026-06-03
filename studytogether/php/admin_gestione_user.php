@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
 
-$groups = [];
-if (isset($dbh) && method_exists($dbh, 'getGroups')) {
-    $groups = $dbh->getGroups();
+$users = [];
+if (isset($dbh) && method_exists($dbh, 'getUsers')) {
+    $users = $dbh->getUsers();
 }
 ?>
 <!DOCTYPE html>
@@ -11,38 +11,51 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestione gruppi - StudyGroups</title>
+    <title>Gestione utenti - StudyGroups</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="admin-page">
+<body class="bg-body-tertiary">
     <header class="top-bar">
         <h1>STUDY GROUPS</h1>
     </header>
 
-    <main class="admin-container">
-        <section class="admin-card" aria-label="Gestione gruppi">
-            <div class="admin-card-head">
-                <p>Area admin</p>
-                <h2>Gestione gruppi</h2>
-                <span>Lista dei gruppi presenti nel database con accesso rapido alla pagina informazioni.</span>
-            </div>
+    <main class="container py-4 py-lg-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-xl-10">
+                <div class="card border-0 shadow-sm overflow-hidden">
+                    <div class="card-header bg-info text-dark border-0 py-4">
+                        <p class="text-uppercase fw-semibold small mb-2">Area admin</p>
+                        <h2 class="h3 mb-2">Gestione utenti</h2>
+                    </div>
 
-            <div class="admin-list">
-                <?php if (!empty($groups)): ?>
-                    <?php foreach ($groups as $group): ?>
-                        <article class="admin-row">
-                            <h3><?php echo htmlspecialchars($group['name'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                            <a class="admin-action" href="info_gruppo.php?id=<?php echo urlencode($group['id']); ?>">Modifica</a>
-                        </article>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <article class="admin-row">
-                        <h3>Nessun gruppo disponibile</h3>
-                        <a class="admin-action" href="info_gruppo.php">Modifica</a>
-                    </article>
-                <?php endif; ?>
+                    <div class="card-body p-4 p-lg-5">
+                        <div class="list-group list-group-flush gap-3">
+                            <?php if (!empty($users)): ?>
+                                <?php foreach ($users as $user): ?>
+                                    <div class="list-group-item border rounded-3 shadow-sm">
+                                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                                            <div>
+                                                <h3 class="h5 mb-1"><?php echo htmlspecialchars(trim($user['name'] . ' ' . $user['surname']), ENT_QUOTES, 'UTF-8'); ?></h3>
+                                                <p class="mb-0 text-body-secondary">Username: <?php echo htmlspecialchars($user['username'], ENT_QUOTES, 'UTF-8'); ?> | Ruolo: <?php echo htmlspecialchars($user['role'], ENT_QUOTES, 'UTF-8'); ?></p>
+                                            </div>
+                                            <button type="button" class="btn btn-danger px-4">Modifica</button>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <div class="list-group-item border rounded-3 shadow-sm">
+                                    <h3 class="h5 mb-1">Nessun utente disponibile</h3>
+                                    <p class="mb-0 text-body-secondary">Al momento non ci sono utenti nel database.</p>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

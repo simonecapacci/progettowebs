@@ -68,6 +68,79 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+
+    public function getGroupsByUsername($username){
+        $query = "
+            SELECT
+                sg.id,
+                sg.name,
+                sg.description,
+                sg.date,
+                sg.time,
+                sg.created_at,
+                sg.subject_id,
+                s.name AS subject_name,
+                sg.creator_id,
+                u.username AS creator_username,
+                u.name AS creator_name,
+                u.surname AS creator_surname
+            FROM study_group sg
+            INNER JOIN subject s ON sg.subject_id = s.id
+            INNER JOIN `user` u ON sg.creator_id = u.id
+            WHERE u.username = ?
+            ORDER BY sg.date ASC, sg.time ASC, sg.created_at DESC
+        ";
+
+        $stmt = $this->db->prepare($query);
+        if (!$stmt) {
+            die("Prepare failed: " . $this->db->error);
+        }
+
+        $stmt->bind_param("s", $username);
+        if (!$stmt->execute()) {
+            die("Execute failed: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+        return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
+    }
+
+    public function getGroupsBySubject($subjectName){
+        $query = "
+            SELECT
+                sg.id,
+                sg.name,
+                sg.description,
+                sg.date,
+                sg.time,
+                sg.created_at,
+                sg.subject_id,
+                s.name AS subject_name,
+                sg.creator_id,
+                u.username AS creator_username,
+                u.name AS creator_name,
+                u.surname AS creator_surname
+            FROM study_group sg
+            INNER JOIN subject s ON sg.subject_id = s.id
+            INNER JOIN `user` u ON sg.creator_id = u.id
+            WHERE s.name = ?
+            ORDER BY sg.date ASC, sg.time ASC, sg.created_at DESC
+        ";
+
+        $stmt = $this->db->prepare($query);
+        if (!$stmt) {
+            die("Prepare failed: " . $this->db->error);
+        }
+
+        $stmt->bind_param("s", $subjectName);
+        if (!$stmt->execute()) {
+            die("Execute failed: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+        return $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
+    }
+
     public function getSubjects(){
         $query = "
             SELECT
