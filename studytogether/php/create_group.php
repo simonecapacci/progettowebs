@@ -1,5 +1,9 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
+$subjects = [];
+if (isset($dbh) && method_exists($dbh, 'getSubjects')) {
+    $subjects = $dbh->getSubjects();
+}
 
 $navbarType = 'user';
 
@@ -34,8 +38,17 @@ $navbarType = 'user';
                             </div>
 
                             <div class="col-12">
-                                <label for="subject_name" class="form-label fw-semibold">Materia</label>
-                                <input type="text" id="subject_name" name="subject_name" class="form-control form-control-lg" placeholder="Es. Analisi" required>
+                                <label for="subject_id" class="form-label fw-semibold">Materia</label>
+                                <select id="subject_id" name="subject_id" class="form-control form-control-lg" required>
+                                    <option value="">Seleziona una materia</option>
+
+                                        <?php foreach ($subjects as $subject): ?>
+                                        <option value="<?= $subject['id']; ?>">
+                                        <?= htmlspecialchars($subject['name']); ?>
+                                        </option>
+                                        <?php endforeach; ?>
+
+                                </select>
                             </div>
 
                             <div class="col-12">
