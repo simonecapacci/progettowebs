@@ -6,6 +6,8 @@ if (isset($_SESSION['user_id'])) {
     $navbarType = 'guest';
 }
 
+$currentPage = basename($_SERVER['PHP_SELF']);
+
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
@@ -30,45 +32,45 @@ if (isset($_SESSION['user_id'])) {
                 <?php if ($navbarType === 'guest'): ?>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Index</a>
+                        <a class="nav-link <?= $currentPage === 'index.php' ? 'active-page' : '' ?>" href="index.php">Index</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="login.php">Accedi</a>
+                        <a class="nav-link <?= $currentPage === 'login.php' ? 'active-page' : '' ?> " href="login.php">Accedi</a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="signup.php" class="btn btn-outline-light">Registrati</a>
+                        <a href="signup.php" class="btn btn-outline-light <?= $currentPage === 'signup.php' ? 'btn-active-page' : '' ?>">Registrati</a>
                     </li>
 
                 <?php elseif ($navbarType === 'user'): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="home.php">Home</a>
+                        <a class="nav-link <?= $currentPage === 'home.php' ? 'active-page' : '' ?>" href="home.php">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="search_group.php">Cerca Gruppo</a>
+                        <a class="nav-link <?= $currentPage === 'search_group.php' ? 'active-page' : '' ?>" href="search_group.php">Cerca Gruppo</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="my_groups.php">I Mie Gruppi</a>
+                        <a class="nav-link <?= $currentPage === 'my_groups.php' ? 'active-page' : '' ?>" href="my_groups.php">I Mie Gruppi</a>
                     </li>
 
                 <?php elseif ($navbarType === 'admin'): ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="home.php">Home</a>
+                        <a class="nav-link <?= $currentPage === 'home.php' ? 'active-page' : '' ?>" href="home.php">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="search_group.php">Cerca Gruppo</a>
+                        <a class="nav-link <?= $currentPage === 'search_group.php' ? 'active-page' : '' ?>" href="search_group.php">Cerca Gruppo</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="my_groups.php">I Mie Gruppi</a>
+                        <a class="nav-link <?= $currentPage === 'my_groups.php' ? 'active-page' : '' ?>" href="my_groups.php">I Mie Gruppi</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="admin_home.php">Admin Home</a>
+                        <a class="nav-link admin-link <?= $currentPage === 'admin_home.php' ? 'active-page' : '' ?>" href="admin_home.php">Admin Home</a>
                     </li>
 
                 <?php endif; ?>

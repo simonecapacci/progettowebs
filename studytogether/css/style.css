@@ -215,3 +215,27 @@ body {
 .navbar-toggler {
     border: 2px solid rgba(255,255,255,0.5);
 }
+
+/*navbar per admin*/
+.nav-link.admin-link {
+    color: #ffd700 !important;
+    font-weight: bold;
+}
+
+.nav-link.admin-link:hover {
+    color: #ffea70 !important;
+}
+
+/*per Sottolineare pagina in cui sei */
+.nav-link.active-page {
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+.btn-active-page {
+    background-color: white;
+    color: #0d6efd !important;
+    font-weight: bold;
+}
