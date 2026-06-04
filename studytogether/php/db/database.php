@@ -201,5 +201,31 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function createGroup($name, $description, $subject_id, $date, $time, $creator_id){
+    $query = "
+        INSERT INTO study_group
+        (name, description, subject_id, date, time, creator_id)
+        VALUES (?, ?, ?, ?, ?, ?)
+    ";
+
+    $stmt = $this->db->prepare($query);
+
+    if (!$stmt) {
+        die("Prepare failed: " . $this->db->error);
+    }
+
+    $stmt->bind_param(
+        "ssissi",
+        $name,
+        $description,
+        $subject_id,
+        $date,
+        $time,
+        $creator_id
+    );
+
+    return $stmt->execute();
+    }
 }
 ?>

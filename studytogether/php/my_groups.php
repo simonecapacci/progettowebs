@@ -1,6 +1,14 @@
 <?php
 require_once __DIR__ . '/bootstrap.php';
 
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+$username = $_SESSION['username'];
+
+$createdGroups = $dbh->getGroupsByUsername($username);
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +27,7 @@ require_once __DIR__ . '/bootstrap.php';
 
 <?php require_once 'navbar.php'; ?>
 
-    <main class="container py-5 flex-grow-1">
+<main class="container py-5 flex-grow-1">
 
     <div class="text-center mb-5">
         <h2 class="fw-bold">I miei gruppi</h2>
@@ -36,16 +44,9 @@ require_once __DIR__ . '/bootstrap.php';
 
                 <div class="card-body">
                     <div class="list-group">
-
-                        <div class="list-group-item">
-                            <div class="fw-bold">Codice gruppo</div>
-                            <div class="text-muted">Materia - Data</div>
-                        </div>
-
                         <div class="list-group-item text-center text-muted">
                             Nessuna sessione trovata
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -60,14 +61,37 @@ require_once __DIR__ . '/bootstrap.php';
                 <div class="card-body">
                     <div class="list-group">
 
-                        <div class="list-group-item">
-                            <div class="fw-bold">Codice gruppo</div>
-                            <div class="text-muted">Materia - Data</div>
-                        </div>
+                        <?php if (empty($createdGroups)): ?>
 
-                        <div class="list-group-item text-center text-muted">
-                            Nessuna sessione creata
-                        </div>
+                            <div class="list-group-item text-center text-muted">
+                                Nessuna sessione creata
+                            </div>
+
+                        <?php else: ?>
+
+                            <?php foreach ($createdGroups as $group): ?>
+                                <div class="list-group-item">
+                                    <div class="fw-bold">
+                                        <?= htmlspecialchars($group['name'], ENT_QUOTES, 'UTF-8') ?>
+                                    </div>
+
+                                    <div class="text-muted">
+                                        <?= htmlspecialchars($group['subject_name'], ENT_QUOTES, 'UTF-8') ?>
+                                        -
+                                        <?= htmlspecialchars($group['date'], ENT_QUOTES, 'UTF-8') ?>
+                                        alle
+                                        <?= htmlspecialchars(substr($group['time'], 0, 5), ENT_QUOTES, 'UTF-8') ?>
+                                    </div>
+
+                                    <?php if (!empty($group['description'])): ?>
+                                        <div class="small mt-2">
+                                            <?= htmlspecialchars($group['description'], ENT_QUOTES, 'UTF-8') ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endforeach; ?>
+
+                        <?php endif; ?>
 
                     </div>
                 </div>
@@ -77,7 +101,10 @@ require_once __DIR__ . '/bootstrap.php';
     </div>
 
 </main>
-    <?php require_once 'footer.php'; ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<?php require_once 'footer.php'; ?>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
