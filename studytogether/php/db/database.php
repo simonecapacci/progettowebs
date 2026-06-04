@@ -276,5 +276,82 @@ class DatabaseHelper{
 
     return $stmt->execute();
     }
+
+
+    public function  subscribeToGroup($userId, $groupId){
+    $query = "
+        INSERT IGNORE INTO subscription (group_id, user_id)
+        VALUES (?, ?)
+    ";
+
+    $stmt = $this->db->prepare($query);
+
+    if (!$stmt) {
+        die("Prepare failed: " . $this->db->error);
+    }
+
+    $stmt->bind_param("ii", $groupId, $userId);
+
+    return $stmt->execute();
+    }
+
+
+
+
+    public function  isSubscribed($userId, $groupId){
+    $query = "
+        SELECT *
+        FROM subscription
+        WHERE user_id = ?
+        AND group_id = ?
+        LIMIT 1
+    ";
+
+    $stmt = $this->db->prepare($query);
+
+    if (!$stmt) {
+        die("Prepare failed: " . $this->db->error);
+    }
+
+    $stmt->bind_param("ii", $userId, $groupId);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    return $result->num_rows > 0;
+    }
+
+
+    public function  getSubscribedGroups($userId){
+    $query = "
+        SELECT
+            sg.id,
+            sg.name,
+            sg.description,
+            sg.date,
+            sg.time,
+            s.name AS subject_name
+        FROM subscription sub
+        INNER JOIN study_group sg
+            ON sub.group_id = sg.id
+        INNER JOIN subject s
+            ON sg.subject_id = s.id
+        WHERE sub.user_id = ?
+        ORDER BY sg.date ASC, sg.time ASC
+    ";
+
+    $stmt = $this->db->prepare($query);
+
+    if (!$stmt) {
+        die("Prepare failed: " . $this->db->error);
+    }
+
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>

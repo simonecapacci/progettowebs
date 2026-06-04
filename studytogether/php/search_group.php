@@ -7,6 +7,7 @@ if (isset($dbh) && method_exists($dbh, 'getSubjects')) {
 }
 
 $groups = [];
+$userId = $_SESSION['user_id'] ?? null;
 if (isset($dbh) && method_exists($dbh, 'getGroups')) {
     $groups = $dbh->getGroups();
 }
@@ -81,16 +82,49 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
                     <?php if (!empty($groups)): ?>
                         <?php foreach ($groups as $group): ?>
                             <div class="col-12">
-                                <a class="card shadow-sm border-0 text-decoration-none text-reset group-result-card h-100" href="info_gruppo.php?id=<?php echo urlencode($group['id']); ?>" aria-label="Apri il gruppo <?php echo htmlspecialchars($group['name'], ENT_QUOTES, 'UTF-8'); ?>">
+                                <div class="card shadow-sm border-0 group-result-card h-100">
                                     <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
                                         <div>
-                                            <h3 class="h5 mb-2"><?php echo htmlspecialchars($group['name'], ENT_QUOTES, 'UTF-8'); ?></h3>
-                                            <p class="mb-1 text-body-secondary">Materia: <?php echo htmlspecialchars($group['subject_name'], ENT_QUOTES, 'UTF-8'); ?></p>
-                                            <p class="mb-0 text-body-secondary"><?php echo htmlspecialchars($group['date'], ENT_QUOTES, 'UTF-8'); ?> - <?php echo htmlspecialchars($group['time'], ENT_QUOTES, 'UTF-8'); ?></p>
+                                            <h3 class="h5 mb-2">
+                                                <?= htmlspecialchars($group['name']) ?>
+                                            </h3>
+
+                                            <p class="mb-1 text-body-secondary">
+                                                Materia: <?= htmlspecialchars($group['subject_name']) ?>
+                                            </p>
+
+                                            <p class="mb-0 text-body-secondary">
+                                                <?= htmlspecialchars($group['date']) ?>
+                                                -
+                                                <?= htmlspecialchars($group['time']) ?>
+                                            </p>
                                         </div>
-                                        <span class="btn btn-primary px-4 align-self-start align-self-md-center">Apri</span>
+                                        <?php
+                                        $isSubscribed = false;
+                                        
+                                        if($userId){
+                                            $isSubscribed = $dbh->isSubscribed($userId, $group['id']);
+                                        }
+                                        ?>
+
+                                        <?php if($isSubscribed): ?>
+
+                                            <button class="btn btn-success px-4 align-self-start align-self-md-center" disabled>
+                                                Sei Iscritto 
+                                            </button>
+                                        <?php else: ?>
+
+                                            <form action="subscribe_group.php" method="POST" onclick="event.stopPropagation();">
+                                                <input type="hidden" name="group_id" value="<?= $group['id'] ?>">
+
+                                                <button type="submit" class="btn btn-primary px-4 align-self-start align-self-md-center">
+                                                    Iscriviti 
+                                                </button>
+                                            </form>
+                                        <?php endif; ?>
+
                                     </div>
-                                </a>
+                                        </div>
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>

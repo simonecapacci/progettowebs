@@ -9,6 +9,10 @@ if (!isset($_SESSION['user_id'])) {
 $username = $_SESSION['username'];
 
 $createdGroups = $dbh->getGroupsByUsername($username);
+
+$userId = $_SESSION['user_id'];
+
+$joinedGroups = $dbh->getSubscribedGroups($userId);
 ?>
 
 <!DOCTYPE html>
@@ -44,9 +48,38 @@ $createdGroups = $dbh->getGroupsByUsername($username);
 
                 <div class="card-body">
                     <div class="list-group">
-                        <div class="list-group-item text-center text-muted">
-                            Nessuna sessione trovata
-                        </div>
+                        <?php if (empty($joinedGroups)): ?>
+                            <div class="list-group-item text-center text-muted">
+                                Nessuna sessione trovata
+                            </div>
+                        <?php else: ?>
+                            <?php foreach ($joinedGroups as $group): ?>
+                                
+                                <div class="list-group-item">
+
+                                    <div class="fw-bold">
+                                        <?= htmlspecialchars($group['name'], ENT_QUOTES, 'UTF-8') ?>
+                                    </div>
+
+                                    <div class="text-muted">
+                                        <?= htmlspecialchars($group['subject_name'], ENT_QUOTES, 'UTF-8') ?>
+                                        -
+                                        <?= htmlspecialchars($group['date'], ENT_QUOTES, 'UTF-8') ?>
+                                        alle
+                                        <?= htmlspecialchars(substr($group['time'], 0, 5), ENT_QUOTES, 'UTF-8') ?>
+                                    </div>
+
+                                    <?php if (!empty($group['description'])): ?>
+                                        <div class="small mt-2">
+                                            <?= htmlspecialchars($group['description'], ENT_QUOTES, 'UTF-8') ?>
+                                        </div>
+                                    <?php endif; ?>
+
+                                </div>
+
+                            <?php endforeach; ?>
+
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
