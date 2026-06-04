@@ -62,6 +62,12 @@ $navbarType = 'admin';
                                                             · <?= h(($group['date'] ?? '') . (!empty($group['time']) ? ' ' . $group['time'] : '')) ?>
                                                         <?php endif; ?>
                                                     </div>
+                                                    <div class="text-secondary small">
+                                                        Creato da @<?= h($group['creator_username'] ?? 'utente') ?>
+                                                        <?php if (!empty($group['creator_email'])): ?>
+                                                            · <?= h($group['creator_email']) ?>
+                                                        <?php endif; ?>
+                                                    </div>
                                                 </div>
                                                 <button type="button" class="btn btn-danger btn-sm px-3">Modifica</button>
                                             </div>
@@ -78,11 +84,12 @@ $navbarType = 'admin';
                                         <?php foreach ($users as $user): ?>
                                             <div class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 py-3">
                                                 <div>
-                                                    <div class="fw-semibold fs-5">
-                                                        <?= h(trim(($user['name'] ?? '') . ' ' . ($user['surname'] ?? '')) ?: $user['username']) ?>
+                                                    <div class="fw-semibold fs-5"><?= h($user['username']) ?></div>
+                                                    <div class="text-secondary small">
+                                                        <?= h($user['email'] ?? 'Email non disponibile') ?> · <?= h($user['role'] ?? 'utente') ?>
                                                     </div>
                                                     <div class="text-secondary small">
-                                                        @<?= h($user['username']) ?> · <?= h($user['role'] ?? 'utente') ?>
+                                                        <?= !empty($user['active']) ? 'Attivo' : 'Disattivato' ?>
                                                     </div>
                                                 </div>
                                                 <button type="button" class="btn btn-danger btn-sm px-3">Modifica</button>

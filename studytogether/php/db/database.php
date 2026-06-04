@@ -30,8 +30,8 @@ class DatabaseHelper{
                 s.name AS subject_name,
                 sg.creator_id,
                 u.username AS creator_username,
-                u.name AS creator_name,
-                u.surname AS creator_surname
+                u.email AS creator_email,
+                u.role AS creator_role
             FROM study_group sg
             INNER JOIN subject s ON sg.subject_id = s.id
             INNER JOIN `user` u ON sg.creator_id = u.id
@@ -51,13 +51,12 @@ class DatabaseHelper{
             SELECT
                 id,
                 username,
+                email,
                 role,
-                name,
-                surname,
                 active,
                 created_at
             FROM `user`
-            ORDER BY surname ASC, name ASC, username ASC
+            ORDER BY username ASC
         ";
 
         $result = $this->db->query($query);
@@ -68,6 +67,51 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getUserByUsername($username){
+        $query = "
+            SELECT
+                id,
+                username,
+                email,
+                password,
+                role,
+                active,
+                created_at
+            FROM `user`
+            WHERE username = ?
+            LIMIT 1
+        ";
+
+        $stmt = $this->db->prepare($query);
+        if (!$stmt) {
+            die("Prepare failed: " . $this->db->error);
+        }
+
+        $stmt->bind_param("s", $username);
+        if (!$stmt->execute()) {
+            die("Execute failed: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+        return $result ? $result->fetch_assoc() : null;
+    }
+
+    public function authenticateUser($username, $password){
+        $user = $this->getUserByUsername($username);
+
+        if (!$user || !(bool) $user['active']) {
+            return false;
+        }
+
+        $storedPassword = (string) $user['password'];
+
+        if (password_verify($password, $storedPassword) || hash_equals($storedPassword, $password)) {
+            unset($user['password']);
+            return $user;
+        }
+
+        return false;
+    }
 
     public function getGroupsByUsername($username){
         $query = "
@@ -82,8 +126,8 @@ class DatabaseHelper{
                 s.name AS subject_name,
                 sg.creator_id,
                 u.username AS creator_username,
-                u.name AS creator_name,
-                u.surname AS creator_surname
+                u.email AS creator_email,
+                u.role AS creator_role
             FROM study_group sg
             INNER JOIN subject s ON sg.subject_id = s.id
             INNER JOIN `user` u ON sg.creator_id = u.id
@@ -118,8 +162,8 @@ class DatabaseHelper{
                 s.name AS subject_name,
                 sg.creator_id,
                 u.username AS creator_username,
-                u.name AS creator_name,
-                u.surname AS creator_surname
+                u.email AS creator_email,
+                u.role AS creator_role
             FROM study_group sg
             INNER JOIN subject s ON sg.subject_id = s.id
             INNER JOIN `user` u ON sg.creator_id = u.id

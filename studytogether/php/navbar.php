@@ -19,7 +19,7 @@ $navbarType = $navbarType ?? 'guest';
 
         <div class="collapse navbar-collapse" id="navbarMenu">
 
-            <ul class="navbar-nav ms-4">
+            <ul class="navbar-nav ms-4 align-items-lg-center gap-lg-1">
                 <?php if ($navbarType === 'guest'): ?>
 
                     <li class="nav-item">
@@ -47,6 +47,10 @@ $navbarType = $navbarType ?? 'guest';
                         <a class="nav-link" href="my_groups.php">I Mie Gruppi</a>
                     </li>
 
+                    <li class="nav-item ms-lg-2">
+                        <a href="logout.php" class="btn btn-outline-light">Esci</a>
+                    </li>
+
                 <?php elseif ($navbarType === 'admin'): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="home.php">Home</a>
@@ -62,6 +66,10 @@ $navbarType = $navbarType ?? 'guest';
 
                     <li class="nav-item">
                         <a class="nav-link" href="admin_home.php">Admin Home</a>
+                    </li>
+
+                    <li class="nav-item ms-lg-2">
+                        <a href="logout.php" class="btn btn-outline-light">Esci</a>
                     </li>
 
                 <?php endif; ?>
