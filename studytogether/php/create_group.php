@@ -5,8 +5,6 @@ if (isset($dbh) && method_exists($dbh, 'getSubjects')) {
     $subjects = $dbh->getSubjects();
 }
 
-$navbarType = 'user';
-
 ?>
 <!DOCTYPE html>
 <html lang="it">

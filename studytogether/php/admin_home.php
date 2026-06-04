@@ -9,8 +9,6 @@ function h(string $value): string
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
-$navbarType = 'admin';
-
 ?>
 <!DOCTYPE html>
 <html lang="it">

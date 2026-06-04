@@ -1,5 +1,11 @@
 <?php
-$navbarType = $navbarType ?? 'guest';
+
+if (isset($_SESSION['user_id'])) {
+    $navbarType = ($_SESSION['role'] === 'admin') ? 'admin' : 'user';
+} else {
+    $navbarType = 'guest';
+}
+
 ?>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
@@ -20,6 +26,7 @@ $navbarType = $navbarType ?? 'guest';
         <div class="collapse navbar-collapse" id="navbarMenu">
 
             <ul class="navbar-nav ms-4 align-items-lg-center gap-lg-1">
+
                 <?php if ($navbarType === 'guest'): ?>
 
                     <li class="nav-item">
@@ -47,10 +54,6 @@ $navbarType = $navbarType ?? 'guest';
                         <a class="nav-link" href="my_groups.php">I Mie Gruppi</a>
                     </li>
 
-                    <li class="nav-item ms-lg-2">
-                        <a href="logout.php" class="btn btn-outline-light">Esci</a>
-                    </li>
-
                 <?php elseif ($navbarType === 'admin'): ?>
                     <li class="nav-item">
                         <a class="nav-link" href="home.php">Home</a>
@@ -68,13 +71,34 @@ $navbarType = $navbarType ?? 'guest';
                         <a class="nav-link" href="admin_home.php">Admin Home</a>
                     </li>
 
-                    <li class="nav-item ms-lg-2">
-                        <a href="logout.php" class="btn btn-outline-light">Esci</a>
-                    </li>
-
                 <?php endif; ?>
 
             </ul>
+
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <div class="ms-auto mt-3 mt-lg-0">
+                    <div class="dropdown">
+                        <button class="btn btn-light rounded-pill px-4 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                            <?= htmlspecialchars($_SESSION['username']) ?>
+
+                        </button>
+
+                        <ul class="dropdown-menu dropdown-menu-lg-end">
+                            <li>
+                                <a class="dropdown-item text-danger" href="logout.php">
+                                    Esci
+                                </a>
+                            </li>
+                        </ul>
+
+
+                    </div>
+
+                </div>
+
+            <?php endif; ?>
+
 
         </div>
     </div>
