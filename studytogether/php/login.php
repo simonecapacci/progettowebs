@@ -2,6 +2,9 @@
 require_once __DIR__ . '/bootstrap.php';
 
 $error = null;
+$success = isset($_GET['registered']) && $_GET['registered'] === '1'
+    ? 'Registrazione completata. Ora puoi accedere.'
+    : null;
 $identifier = '';
 
 if (isset($_SESSION['user_id'])) {
@@ -58,7 +61,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
                 <div class="card shadow-sm border-0">
                     <div class="card-body p-4">
-                        <h2 class="text-center fw-bold mb-4">ACCEDI</h2>
+                        <h2 class="text-center fw-bold mb-4">Accedi</h2>
+
+                        <?php if ($success !== null): ?>
+                            <div class="alert alert-success" role="alert">
+                                <?= htmlspecialchars($success, ENT_QUOTES, 'UTF-8') ?>
+                            </div>
+                        <?php endif; ?>
 
                         <?php if ($error !== null): ?>
                             <div class="alert alert-danger" role="alert">
@@ -69,12 +78,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <form action="login.php" method="post" novalidate>
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" name="username" placeholder="USERNAME" value="<?= htmlspecialchars($identifier, ENT_QUOTES, 'UTF-8') ?>" required>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?= htmlspecialchars($identifier, ENT_QUOTES, 'UTF-8') ?>" required>
                             </div>
 
                             <div class="mb-4">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="PASSWORD" required>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                             </div>
 
                             <button type="submit" class="btn btn-primary w-100">Accedi</button>

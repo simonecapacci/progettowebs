@@ -96,6 +96,55 @@ class DatabaseHelper{
         return $result ? $result->fetch_assoc() : null;
     }
 
+    public function getUserByEmail($email){
+        $query = "
+            SELECT
+                id,
+                username,
+                email,
+                password,
+                role,
+                active,
+                created_at
+            FROM `user`
+            WHERE email = ?
+            LIMIT 1
+        ";
+
+        $stmt = $this->db->prepare($query);
+        if (!$stmt) {
+            die("Prepare failed: " . $this->db->error);
+        }
+
+        $stmt->bind_param("s", $email);
+        if (!$stmt->execute()) {
+            die("Execute failed: " . $stmt->error);
+        }
+
+        $result = $stmt->get_result();
+        return $result ? $result->fetch_assoc() : null;
+    }
+
+    public function createUser($username, $email, $password){
+        $query = "
+            INSERT INTO `user` (username, email, password, role, active)
+            VALUES (?, ?, ?, 'user', TRUE)
+        ";
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $this->db->prepare($query);
+        if (!$stmt) {
+            die("Prepare failed: " . $this->db->error);
+        }
+
+        $stmt->bind_param("sss", $username, $email, $hashedPassword);
+        if (!$stmt->execute()) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function authenticateUser($username, $password){
         $user = $this->getUserByUsername($username);
 
