@@ -53,7 +53,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link <?= $currentPage === 'my_groups.php' ? 'active-page' : '' ?>" href="my_groups.php">I Mie Gruppi</a>
+                        <a class="nav-link <?= $currentPage === 'my_groups.php' ? 'active-page' : '' ?>" href="my_groups.php">I Miei Gruppi</a>
                     </li>
 
                 <?php elseif ($navbarType === 'admin'): ?>
@@ -66,7 +66,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link <?= $currentPage === 'my_groups.php' ? 'active-page' : '' ?>" href="my_groups.php">I Mie Gruppi</a>
+                        <a class="nav-link <?= $currentPage === 'my_groups.php' ? 'active-page' : '' ?>" href="my_groups.php">I Miei Gruppi</a>
                     </li>
 
                     <li class="nav-item">
