@@ -4,10 +4,9 @@ USE studytogether;
 CREATE TABLE IF NOT EXISTS `user` (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     role ENUM('user', 'admin') NOT NULL DEFAULT 'user',
-    name VARCHAR(50),
-    surname VARCHAR(50),
     active BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -50,10 +49,10 @@ INSERT INTO subject (name) VALUES
 ('Tecnologie Web');
 
 -- Insert an admin
-INSERT INTO user (username, password, role, name, surname) VALUES 
-('admin', 'admin', 'admin', 'Admin', 'Istrator');
+INSERT INTO user (username, email, password, role) VALUES 
+('admin', 'admin@studygroups.it', 'admin', 'admin');
 
 -- Insert some users
-INSERT INTO user (username, password, role, name, surname) VALUES 
-('mario', 'mario', 'user', 'Mario', 'Rossi'),
-('luigi', 'luigi', 'user', 'Luigi', 'Verdi');
+INSERT INTO user (username, email, password, role) VALUES 
+('mario', 'mario@email.it', 'mario', 'user'),
+('luigi', 'luigi@email.it', 'luigi', 'user');
