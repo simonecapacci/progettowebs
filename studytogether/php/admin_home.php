@@ -33,7 +33,7 @@ function h(string $value): string
                             <p class="text-secondary mb-0">Seleziona una scheda per vedere solo la lista desiderata.</p>
                         </div>
 
-                        <ul class="nav nav-tabs mb-4" id="adminTabs" role="tablist">
+                        <ul class="nav nav-tabs admin-tabs mb-4" id="adminTabs" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link active" id="groups-tab" data-bs-toggle="tab" data-bs-target="#groups-pane" type="button" role="tab" aria-controls="groups-pane" aria-selected="true">
                                     Gruppi
