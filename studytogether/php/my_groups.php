@@ -12,6 +12,15 @@ $createdGroups = $dbh->getGroupsByUsername($username);
 
 $userId = $_SESSION['user_id'];
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['unsubscribe_group_id'])) {
+    $groupId = $_POST['unsubscribe_group_id'];
+
+    $dbh->unsubscribeFromGroup($userId, $groupId);
+
+    header('Location: my_groups.php');
+    exit;
+}
+
 $joinedGroups = $dbh->getSubscribedGroups($userId);
 ?>
 
@@ -74,6 +83,13 @@ $joinedGroups = $dbh->getSubscribedGroups($userId);
                                             <?= htmlspecialchars($group['description'], ENT_QUOTES, 'UTF-8') ?>
                                         </div>
                                     <?php endif; ?>
+                                    <form method="POST" class="mt-3">
+                                        <input type="hidden" name="unsubscribe_group_id" value="<?= htmlspecialchars($group['id'], ENT_QUOTES, 'UTF-8') ?>">
+
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                Disiscriviti
+                                            </button>
+                                    </form>
 
                                 </div>
 

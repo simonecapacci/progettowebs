@@ -353,5 +353,23 @@ class DatabaseHelper{
 
     return $result->fetch_all(MYSQLI_ASSOC);
     }
+    
+    public function unsubscribeFromGroup($userId, $groupId){
+    $query = "
+        DELETE FROM subscription
+        WHERE user_id = ?
+        AND group_id = ?
+    ";
+
+    $stmt = $this->db->prepare($query);
+
+    if (!$stmt) {
+        die("Prepare failed: " . $this->db->error);
+    }
+
+    $stmt->bind_param("ii", $userId, $groupId);
+
+    return $stmt->execute();
+}
 }
 ?>
