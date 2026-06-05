@@ -56,18 +56,18 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
                                 </h2>
                                 <div id="subjectCollapse" class="accordion-collapse collapse show" aria-labelledby="subjectHeading" data-bs-parent="#subjectAccordion">
                                     <div class="accordion-body p-3">
-                                        <div class="vstack gap-2">
+                                        <div class="vstack gap-2" id="subjectFilters">
                                             <?php if (!empty($subjects)): ?>
                                                 <?php foreach ($subjects as $subject): ?>
                                                     <label class="form-check d-flex align-items-center gap-2 mb-0">
-                                                        <input class="form-check-input m-0" type="checkbox" name="subject[]" value="<?php echo htmlspecialchars($subject['name'], ENT_QUOTES, 'UTF-8'); ?>">
-                                                        <span class="form-check-label"><?php echo htmlspecialchars($subject['name'], ENT_QUOTES, 'UTF-8'); ?></span>
+                                                        <input class="form-check-input m-0 js-subject-filter" type="checkbox" value="<?= htmlspecialchars($subject['name'], ENT_QUOTES, 'UTF-8') ?>">
+                                                        <span class="form-check-label"><?= htmlspecialchars($subject['name'], ENT_QUOTES, 'UTF-8') ?></span>
                                                     </label>
                                                 <?php endforeach; ?>
                                             <?php else: ?>
-                                                <label class="form-check d-flex align-items-center gap-2 mb-0"><input class="form-check-input m-0" type="checkbox" value="Analisi"><span class="form-check-label">Analisi</span></label>
-                                                <label class="form-check d-flex align-items-center gap-2 mb-0"><input class="form-check-input m-0" type="checkbox" value="Programmazione"><span class="form-check-label">Programmazione</span></label>
-                                                <label class="form-check d-flex align-items-center gap-2 mb-0"><input class="form-check-input m-0" type="checkbox" value="Basi di Dati"><span class="form-check-label">Basi di Dati</span></label>
+                                                <label class="form-check d-flex align-items-center gap-2 mb-0"><input class="form-check-input m-0 js-subject-filter" type="checkbox" value="Analisi"><span class="form-check-label">Analisi</span></label>
+                                                <label class="form-check d-flex align-items-center gap-2 mb-0"><input class="form-check-input m-0 js-subject-filter" type="checkbox" value="Programmazione"><span class="form-check-label">Programmazione</span></label>
+                                                <label class="form-check d-flex align-items-center gap-2 mb-0"><input class="form-check-input m-0 js-subject-filter" type="checkbox" value="Basi di Dati"><span class="form-check-label">Basi di Dati</span></label>
                                             <?php endif; ?>
                                         </div>
                                     </div>
@@ -84,13 +84,14 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
                         <p class="text-uppercase text-primary fw-semibold small mb-1">Risultati</p>
                         <h2 class="h4 mb-0">Gruppi disponibili</h2>
                     </div>
-                    <span class="text-body-secondary small d-none d-md-inline"><?php echo count($groups); ?> gruppi trovati</span>
+                    <span class="text-body-secondary small d-none d-md-inline" id="groupsCount"><?php echo count($groups); ?> gruppi trovati</span>
                 </div>
 
-                <div class="row g-3">
+                <div class="row g-3" id="groupsList">
                     <?php if (!empty($groups)): ?>
                         <?php foreach ($groups as $group): ?>
-                            <div class="col-12">
+                            <?php $subjectName = strtolower((string) ($group['subject_name'] ?? '')); ?>
+                            <div class="col-12 group-item" data-subject="<?= htmlspecialchars($subjectName, ENT_QUOTES, 'UTF-8') ?>">
                                 <div class="card shadow-sm border-0 group-result-card h-100">
                                     <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
                                         <div>
@@ -144,7 +145,7 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
                                         <?php endif; ?>
 
                                     </div>
-                                        </div>
+                                </div>
                             </div>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -163,5 +164,6 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
     </main>
     <?php require_once 'footer.php'; ?>             
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
