@@ -4,6 +4,15 @@ require_once __DIR__ . '/bootstrap.php';
 $groups = $dbh->getGroups();
 $users = $dbh->getUsers();
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user_id'])) {
+    $userIdToDelete = (int) $_POST['delete_user_id'];
+
+    $dbh->deleteUser($userIdToDelete);
+
+    header('Location: admin_home.php');
+    exit;
+}
+
 function h(string $value): string
 {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
@@ -83,14 +92,23 @@ function h(string $value): string
                                             <div class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 py-3">
                                                 <div>
                                                     <div class="fw-semibold fs-5"><?= h($user['username']) ?></div>
+
                                                     <div class="text-secondary small">
                                                         <?= h($user['email'] ?? 'Email non disponibile') ?> · <?= h($user['role'] ?? 'utente') ?>
                                                     </div>
+
                                                     <div class="text-secondary small">
                                                         <?= !empty($user['active']) ? 'Attivo' : 'Disattivato' ?>
                                                     </div>
                                                 </div>
-                                                <button type="button" class="btn btn-danger btn-sm px-3">Modifica</button>
+
+                                                <form method="POST" onsubmit="return confirm('Vuoi davvero eliminare questo utente?');">
+                                                    <input type="hidden" name="delete_user_id" value="<?= h((string)$user['id']) ?>">
+
+                                                    <button type="submit" class="btn btn-danger btn-sm px-3">
+                                                        Elimina
+                                                    </button>
+                                                </form>
                                             </div>
                                         <?php endforeach; ?>
                                     <?php else: ?>

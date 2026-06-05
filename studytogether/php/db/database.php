@@ -353,7 +353,7 @@ class DatabaseHelper{
 
     return $result->fetch_all(MYSQLI_ASSOC);
     }
-    
+
     public function unsubscribeFromGroup($userId, $groupId){
     $query = "
         DELETE FROM subscription
@@ -370,6 +370,20 @@ class DatabaseHelper{
     $stmt->bind_param("ii", $userId, $groupId);
 
     return $stmt->execute();
-}
+    }
+
+    public function deleteUser($userId) {
+        $query = "DELETE FROM `user` WHERE id = ?";
+
+        $stmt = $this->db->prepare($query);
+
+        if (!$stmt) {
+            die("Prepare failed: " . $this->db->error);
+        }
+
+        $stmt->bind_param("i", $userId);
+
+    return $stmt->execute();
+    }
 }
 ?>
