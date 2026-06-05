@@ -60,7 +60,7 @@ require_once __DIR__ . '/bootstrap.php';
                     Crea un nuovo gruppo di studio e organizza un incontro.
                 </p>
 
-                <a href="search_group.php" class="btn btn-study w-100 mt-auto">
+                <a href="create_group.php" class="btn btn-study w-100 mt-auto">
                     CREA GRUPPO
                 </a>
 
@@ -78,7 +78,7 @@ require_once __DIR__ . '/bootstrap.php';
                     Visualizza i gruppi a cui partecipi.
                 </p>
 
-                <a href="search_group.php" class="btn btn-study w-100 mt-auto">
+                <a href="my_groups.php" class="btn btn-study w-100 mt-auto">
                     I MIEI GRUPPI
                 </a>
 
