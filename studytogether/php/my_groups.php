@@ -44,7 +44,7 @@ $joinedGroups = $dbh->getSubscribedGroups($userId);
 
     <div class="text-center mb-5">
         <h2 class="fw-bold">I miei gruppi</h2>
-        <p class="text-muted">Visualizza le sessioni a cui sei iscritto e quelle create da te.</p>
+        <p class="text-muted">Visualizza i gruppi a cui sei iscritto e quelli creati da te.</p>
     </div>
 
     <div class="row justify-content-center g-5">
@@ -52,14 +52,14 @@ $joinedGroups = $dbh->getSubscribedGroups($userId);
         <div class="col-md-5">
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-primary text-white text-center fw-bold py-3">
-                    SESSIONI A CUI SONO ISCRITTO
+                    GRUPPI A CUI SONO ISCRITTO
                 </div>
 
                 <div class="card-body">
                     <div class="list-group">
                         <?php if (empty($joinedGroups)): ?>
                             <div class="list-group-item text-center text-muted">
-                                Nessuna sessione trovata
+                                Nessun gruppo trovato
                             </div>
                         <?php else: ?>
                             <?php foreach ($joinedGroups as $group): ?>
@@ -104,7 +104,7 @@ $joinedGroups = $dbh->getSubscribedGroups($userId);
         <div class="col-md-5">
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-primary text-white text-center fw-bold py-3">
-                    SESSIONI CREATE DA ME
+                    GRUPPI CREATI DA ME
                 </div>
 
                 <div class="card-body">
@@ -113,7 +113,7 @@ $joinedGroups = $dbh->getSubscribedGroups($userId);
                         <?php if (empty($createdGroups)): ?>
 
                             <div class="list-group-item text-center text-muted">
-                                Nessuna sessione creata
+                                Nessun gruppo creato
                             </div>
 
                         <?php else: ?>
