@@ -9,6 +9,11 @@ body {
     background-color: #eaeaea;
 }
 
+/*bottoni search group*/
+.group-action-btn {
+    width: 130px;
+}
+
 .login-container {
     min-height: calc(100vh - 100px);
     display: flex;

@@ -120,7 +120,7 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
                                         ?>
 
                                         <?php if($isCreator): ?>
-                                            <button type="button" class="btn btn-secondary px-4" disabled>
+                                            <button type="button" class="btn btn-secondary group-action-btn" disabled>
                                                 Il Tuo Gruppo
                                             </button>
 
@@ -129,7 +129,7 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
                                             <form method="POST">
                                                 <input type="hidden" name="unsubscribe_group_id" value="<?= htmlspecialchars($group['id'], ENT_QUOTES, 'UTF-8') ?>">
 
-                                                <button type="submit" class="btn btn-danger px-4 align-self-start align-self-md-center">
+                                                <button type="submit" class="btn btn-danger group-action-btn">
                                                     Disiscriviti
                                                 </button>
                                             </form>
@@ -138,7 +138,7 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
                                             <form action="subscribe_group.php" method="POST" onclick="event.stopPropagation();">
                                                 <input type="hidden" name="group_id" value="<?= $group['id'] ?>">
 
-                                                <button type="submit" class="btn btn-primary px-4 align-self-start align-self-md-center">
+                                                <button type="submit" class="btn btn-primary group-action-btn">
                                                     Iscriviti 
                                                 </button>
                                             </form>
