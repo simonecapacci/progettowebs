@@ -8,6 +8,16 @@ if (isset($dbh) && method_exists($dbh, 'getSubjects')) {
 
 $groups = [];
 $userId = $_SESSION['user_id'] ?? null;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['unsubscribe_group_id']) && $userId) {
+    $groupId = (int) $_POST['unsubscribe_group_id'];
+
+    $dbh->unsubscribeFromGroup($userId, $groupId);
+
+    header('Location: search_group.php');
+    exit;
+}
+
 if (isset($dbh) && method_exists($dbh, 'getGroups')) {
     $groups = $dbh->getGroups();
 }
@@ -108,9 +118,13 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
 
                                         <?php if($isSubscribed): ?>
 
-                                            <button class="btn btn-success px-4 align-self-start align-self-md-center" disabled>
-                                                Sei Iscritto 
-                                            </button>
+                                            <form method="POST">
+                                                <input type="hidden" name="unsubscribe_group_id" value="<?= htmlspecialchars($group['id'], ENT_QUOTES, 'UTF-8') ?>">
+
+                                                <button type="submit" class="btn btn-success px-4 align-self-start align-self-md-center">
+                                                    Sei Iscritto
+                                                </button>
+                                            </form>
                                         <?php else: ?>
 
                                             <form action="subscribe_group.php" method="POST" onclick="event.stopPropagation();">
