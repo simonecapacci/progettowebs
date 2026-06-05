@@ -34,42 +34,54 @@ require_once __DIR__ . '/bootstrap.php';
 
         <div class="col-md-4">
             <div class="card h-100 shadow-sm border-0 text-center">
-                <div class="card-body p-4">
-                    <h4 class="fw-bold mb-3">Cerca gruppo</h4>
-                    <p class="text-muted">
-                        Trova gruppi disponibili filtrando per materia.
-                    </p>
-                    <a href="search_group.php" class="btn btn-study w-100">
-                        CERCA GRUPPO
-                    </a>
+                <div class="card-body d-flex flex-column p-4">
+
+                <h4 class="fw-bold mb-3">Cerca gruppo</h4>
+
+                <p class="text-muted flex-grow-1">
+                    Trova gruppi disponibili filtrando per materia.
+                </p>
+
+                <a href="search_group.php" class="btn btn-study w-100 mt-auto">
+                    CERCA GRUPPO
+                </a>
+
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="card h-100 shadow-sm border-0 text-center">
-                <div class="card-body p-4">
-                    <h4 class="fw-bold mb-3">Crea gruppo</h4>
-                    <p class="text-muted">
-                        Crea un nuovo gruppo di studio e organizza un incontro.
-                    </p>
-                    <a href="create_group.php" class="btn btn-study w-100">
-                        CREA GRUPPO
-                    </a>
+                <div class="card-body d-flex flex-column p-4">
+
+                <h4 class="fw-bold mb-3">Crea gruppo</h4>
+
+                <p class="text-muted flex-grow-1">
+                    Crea un nuovo gruppo di studio e organizza un incontro.
+                </p>
+
+                <a href="search_group.php" class="btn btn-study w-100 mt-auto">
+                    CREA GRUPPO
+                </a>
+
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="card h-100 shadow-sm border-0 text-center">
-                <div class="card-body p-4">
-                    <h4 class="fw-bold mb-3">I miei gruppi</h4>
-                    <p class="text-muted">
-                        Visualizza i gruppi a cui partecipi.
-                    </p>
-                    <a href="my_groups.php" class="btn btn-study w-100">
-                        I MIEI GRUPPI
-                    </a>
+                <div class="card-body d-flex flex-column p-4">
+
+                <h4 class="fw-bold mb-3">I miei gruppi</h4>
+
+                <p class="text-muted flex-grow-1">
+                    Visualizza i gruppi a cui partecipi.
+                </p>
+
+                <a href="search_group.php" class="btn btn-study w-100 mt-auto">
+                    I MIEI GRUPPI
+                </a>
+
                 </div>
             </div>
         </div>
