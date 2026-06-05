@@ -110,19 +110,26 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
                                         </div>
                                         <?php
                                         $isSubscribed = false;
+                                        $isCreator = false;
                                         
                                         if($userId){
                                             $isSubscribed = $dbh->isSubscribed($userId, $group['id']);
+                                            $isCreator = ($group['creator_id'] == $userId);
                                         }
                                         ?>
 
-                                        <?php if($isSubscribed): ?>
+                                        <?php if($isCreator): ?>
+                                            <button type="button" class="btn btn-secondary px-4" disabled>
+                                                Il Tuo Gruppo
+                                            </button>
+
+                                        <?php elseif($isSubscribed): ?>
 
                                             <form method="POST">
                                                 <input type="hidden" name="unsubscribe_group_id" value="<?= htmlspecialchars($group['id'], ENT_QUOTES, 'UTF-8') ?>">
 
-                                                <button type="submit" class="btn btn-success px-4 align-self-start align-self-md-center">
-                                                    Sei Iscritto
+                                                <button type="submit" class="btn btn-danger px-4 align-self-start align-self-md-center">
+                                                    Disiscriviti
                                                 </button>
                                             </form>
                                         <?php else: ?>
