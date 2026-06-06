@@ -51,7 +51,7 @@ $joinedGroups = $dbh->getSubscribedGroups($userId);
 
         <div class="row g-4">
             <div class="col-12 col-lg-6">
-                <div class="card shadow-sm border-0 h-100">
+                <div class="card shadow-sm border-0">
                     <div class="card-header border-0 text-white fw-bold py-3" style="background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);">
                         Gruppi a cui sono iscritto
                     </div>
@@ -86,7 +86,7 @@ $joinedGroups = $dbh->getSubscribedGroups($userId);
             </div>
 
             <div class="col-12 col-lg-6">
-                <div class="card shadow-sm border-0 h-100">
+                <div class="card shadow-sm border-0">
                     <div class="card-header border-0 text-white fw-bold py-3" style="background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);">
                         Gruppi creati da me
                     </div>
