@@ -47,6 +47,11 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
                             </div>
                         </div>
 
+                        <div class="mb-3">
+                            <label for="groupSearch" class="form-label fw-semibold small text-uppercase text-primary mb-2">Cerca per nome</label>
+                            <input type="search" id="groupSearch" class="form-control form-control-lg" placeholder="Scrivi il nome del gruppo" autocomplete="off">
+                        </div>
+
                         <div class="accordion accordion-flush" id="subjectAccordion">
                             <div class="accordion-item border rounded-3 overflow-hidden">
                                 <h2 class="accordion-header" id="subjectHeading">
@@ -91,7 +96,7 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
                     <?php if (!empty($groups)): ?>
                         <?php foreach ($groups as $group): ?>
                             <?php $subjectName = strtolower((string) ($group['subject_name'] ?? '')); ?>
-                            <div class="col-12 group-item" data-subject="<?= htmlspecialchars($subjectName, ENT_QUOTES, 'UTF-8') ?>">
+                            <div class="col-12 group-item" data-name="<?= htmlspecialchars(strtolower((string) ($group['name'] ?? '')), ENT_QUOTES, 'UTF-8') ?>" data-subject="<?= htmlspecialchars($subjectName, ENT_QUOTES, 'UTF-8') ?>">
                                 <div class="card shadow-sm border-0 group-result-card h-100">
                                     <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
                                         <div>

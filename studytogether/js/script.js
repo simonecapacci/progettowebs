@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   const checkboxes = Array.from(document.querySelectorAll('.js-subject-filter'));
+  const searchInput = document.getElementById('groupSearch');
   const groupItems = Array.from(document.querySelectorAll('.group-item'));
   const groupsCount = document.getElementById('groupsCount');
 
-  if (!checkboxes.length || !groupItems.length) {
+  if (!checkboxes.length && !searchInput) {
     return;
   }
 
@@ -14,11 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
       .filter((checkbox) => checkbox.checked)
       .map((checkbox) => normalize(checkbox.value));
 
+    const searchTerm = normalize(searchInput ? searchInput.value : '');
     let visibleCount = 0;
 
     groupItems.forEach((item) => {
       const itemSubject = normalize(item.dataset.subject || '');
-      const shouldShow = selectedSubjects.length === 0 || selectedSubjects.includes(itemSubject);
+      const itemName = normalize(item.dataset.name || '');
+      const matchesSubject = selectedSubjects.length === 0 || selectedSubjects.includes(itemSubject);
+      const matchesSearch = searchTerm === '' || itemName.includes(searchTerm);
+      const shouldShow = matchesSubject && matchesSearch;
 
       item.classList.toggle('d-none', !shouldShow);
 
@@ -35,6 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', updateGroups);
   });
+
+  if (searchInput) {
+    searchInput.addEventListener('input', updateGroups);
+  }
 
   updateGroups();
 });
