@@ -9,6 +9,11 @@ body {
     background-color: #eaeaea;
 }
 
+/*icona sito*/
+svg{
+    margin-right: 5px;
+}
+
 /*bottoni search group*/
 .group-action-btn {
     width: 130px;
