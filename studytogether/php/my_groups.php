@@ -72,7 +72,7 @@ $joinedGroups = $dbh->getSubscribedGroups($userId);
                                                     <div class="small mt-2 text-body-secondary"><?= h($group['description']) ?></div>
                                                 <?php endif; ?>
                                             </div>
-                                            <form method="POST" class="ms-md-auto">
+                                            <form method="POST" class="ms-md-auto unsubscribe-form">
                                                 <input type="hidden" name="unsubscribe_group_id" value="<?= h((string) $group['id']) ?>">
                                                 <button type="submit" class="btn btn-danger btn-sm px-3">Disiscriviti</button>
                                             </form>
@@ -116,5 +116,6 @@ $joinedGroups = $dbh->getSubscribedGroups($userId);
 
     <?php require_once 'footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/unsubscribed.js"></script>
 </body>
 </html>
