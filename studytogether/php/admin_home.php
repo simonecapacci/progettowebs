@@ -102,7 +102,7 @@ function h(string $value): string
                                                     </div>
                                                 </div>
 
-                                                <form method="POST" onsubmit="return confirm('Vuoi davvero eliminare questo utente?');">
+                                                <form method="POST" class="delete-user-form">
                                                     <input type="hidden" name="delete_user_id" value="<?= h((string)$user['id']) ?>">
 
                                                     <button type="submit" class="btn btn-danger btn-sm px-3">
@@ -125,5 +125,6 @@ function h(string $value): string
 
     <?php require_once 'footer.php'; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/delate_users.js"></script>
 </body>
 </html>
