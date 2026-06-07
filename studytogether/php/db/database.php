@@ -35,6 +35,7 @@ class DatabaseHelper{
             FROM study_group sg
             INNER JOIN subject s ON sg.subject_id = s.id
             INNER JOIN `user` u ON sg.creator_id = u.id
+            WHERE TIMESTAMP(sg.date, sg.time) >= NOW()
             ORDER BY sg.date ASC, sg.time ASC, sg.created_at DESC
         ";
 
@@ -181,6 +182,7 @@ class DatabaseHelper{
             INNER JOIN subject s ON sg.subject_id = s.id
             INNER JOIN `user` u ON sg.creator_id = u.id
             WHERE u.username = ?
+            AND TIMESTAMP(sg.date, sg.time) >= NOW()
             ORDER BY sg.date ASC, sg.time ASC, sg.created_at DESC
         ";
 
@@ -337,6 +339,7 @@ class DatabaseHelper{
         INNER JOIN subject s
             ON sg.subject_id = s.id
         WHERE sub.user_id = ?
+        AND TIMESTAMP(sg.date, sg.time) >= NOW()
         ORDER BY sg.date ASC, sg.time ASC
     ";
 
