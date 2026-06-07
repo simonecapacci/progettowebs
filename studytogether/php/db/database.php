@@ -57,6 +57,7 @@ class DatabaseHelper{
                 active,
                 created_at
             FROM `user`
+            WHERE role = 'user'
             ORDER BY username ASC
         ";
 
@@ -376,7 +377,11 @@ class DatabaseHelper{
     }
 
     public function deleteUser($userId) {
-        $query = "DELETE FROM `user` WHERE id = ?";
+        $query = "
+            UPDATE `user`
+            SET active = 0
+            WHERE ID = ?
+        ";
 
         $stmt = $this->db->prepare($query);
 

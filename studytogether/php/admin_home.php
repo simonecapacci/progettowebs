@@ -80,7 +80,7 @@ function h(string $value): string
                                                 </div>
 
                                                 <a href="edit_group.php?id=<?= h((string)$group['id']) ?>"
-                                                class="btn btn-danger btn-sm px-3">
+                                                class="btn btn-danger btn-sm px-3 admin-home-btn">
                                                     Modifica
                                                 </a>
                                             </div>
@@ -100,7 +100,7 @@ function h(string $value): string
                                                     <div class="fw-semibold fs-5"><?= h($user['username']) ?></div>
 
                                                     <div class="text-secondary small">
-                                                        <?= h($user['email'] ?? 'Email non disponibile') ?> · <?= h($user['role'] ?? 'utente') ?>
+                                                        <?= h($user['email'] ?? 'Email non disponibile') ?>
                                                     </div>
 
                                                     <div class="text-secondary small">
@@ -110,10 +110,14 @@ function h(string $value): string
 
                                                 <form method="POST" class="delete-user-form">
                                                     <input type="hidden" name="delete_user_id" value="<?= h((string)$user['id']) ?>">
-
-                                                    <button type="submit" class="btn btn-danger btn-sm px-3">
+                                                    <?= !empty($user['active']) ?
+                                                    "<button type='submit' class='btn btn-danger btn-sm px-3 admin-home-btn'>
                                                         Elimina
-                                                    </button>
+                                                    </button>" :
+                                                    "<button type='button' class='btn btn-danger btn-sm px-3 admin-home-btn disabled'>
+                                                        Disattivato
+                                                    </button>"
+                                                    ?>
                                                 </form>
                                             </div>
                                         <?php endforeach; ?>

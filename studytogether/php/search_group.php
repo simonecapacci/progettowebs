@@ -70,9 +70,7 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
                                                     </label>
                                                 <?php endforeach; ?>
                                             <?php else: ?>
-                                                <label class="form-check d-flex align-items-center gap-2 mb-0"><input class="form-check-input m-0 js-subject-filter" type="checkbox" value="Analisi"><span class="form-check-label">Analisi</span></label>
-                                                <label class="form-check d-flex align-items-center gap-2 mb-0"><input class="form-check-input m-0 js-subject-filter" type="checkbox" value="Programmazione"><span class="form-check-label">Programmazione</span></label>
-                                                <label class="form-check d-flex align-items-center gap-2 mb-0"><input class="form-check-input m-0 js-subject-filter" type="checkbox" value="Basi di Dati"><span class="form-check-label">Basi di Dati</span></label>
+
                                             <?php endif; ?>
                                         </div>
                                     </div>
