@@ -385,5 +385,110 @@ class DatabaseHelper{
 
     return $stmt->execute();
     }
+
+    public function getGroupById($groupId){
+    $query = "
+        SELECT *
+        FROM study_group
+        WHERE id = ?
+        LIMIT 1
+    ";
+
+    $stmt = $this->db->prepare($query);
+
+    if (!$stmt) {
+        die("Prepare failed: " . $this->db->error);
+    }
+
+    $stmt->bind_param("i", $groupId);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    return $result->fetch_assoc();
+    }
+
+    public function updateGroup($groupId, $name, $description){
+    $query = "
+        UPDATE study_group
+        SET name = ?, description = ?
+        WHERE id = ?
+    ";
+
+    $stmt = $this->db->prepare($query);
+
+    if (!$stmt) {
+        die("Prepare failed: " . $this->db->error);
+    }
+
+    $stmt->bind_param(
+        "ssi",
+        $name,
+        $description,
+        $groupId
+    );
+
+    return $stmt->execute();
+    }
+
+    public function deleteGroup($groupId){
+
+    $querySubscriptions = "
+        DELETE FROM subscription
+        WHERE group_id = ?
+    ";
+
+    $stmt = $this->db->prepare($querySubscriptions);
+
+    if (!$stmt) {
+        die("Prepare failed: " . $this->db->error);
+    }
+
+    $stmt->bind_param("i", $groupId);
+    $stmt->execute();
+
+    $queryGroup = "
+        DELETE FROM study_group
+        WHERE id = ?
+    ";
+
+    $stmt = $this->db->prepare($queryGroup);
+
+    if (!$stmt) {
+        die("Prepare failed: " . $this->db->error);
+    }
+
+    $stmt->bind_param("i", $groupId);
+
+    return $stmt->execute();
+    }
+
+    public function getSubscribersByGroupId($groupId){
+
+    $query = "
+        SELECT
+            u.id,
+            u.username,
+            u.email
+        FROM subscription s
+        INNER JOIN `user` u
+            ON s.user_id = u.id
+        WHERE s.group_id = ?
+        ORDER BY u.username ASC
+    ";
+
+    $stmt = $this->db->prepare($query);
+
+    if (!$stmt) {
+        die("Prepare failed: " . $this->db->error);
+    }
+
+    $stmt->bind_param("i", $groupId);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>

@@ -63,12 +63,14 @@ function h(string $value): string
                                             <div class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 py-3">
                                                 <div>
                                                     <div class="fw-semibold fs-5"><?= h($group['name']) ?></div>
+
                                                     <div class="text-secondary small">
                                                         <?= h($group['subject_name'] ?? 'Materia non disponibile') ?>
                                                         <?php if (!empty($group['date']) || !empty($group['time'])): ?>
                                                             · <?= h(($group['date'] ?? '') . (!empty($group['time']) ? ' ' . $group['time'] : '')) ?>
                                                         <?php endif; ?>
                                                     </div>
+
                                                     <div class="text-secondary small">
                                                         Creato da @<?= h($group['creator_username'] ?? 'utente') ?>
                                                         <?php if (!empty($group['creator_email'])): ?>
@@ -76,7 +78,11 @@ function h(string $value): string
                                                         <?php endif; ?>
                                                     </div>
                                                 </div>
-                                                <button type="button" class="btn btn-danger btn-sm px-3">Modifica</button>
+
+                                                <a href="edit_group.php?id=<?= h((string)$group['id']) ?>"
+                                                class="btn btn-danger btn-sm px-3">
+                                                    Modifica
+                                                </a>
                                             </div>
                                         <?php endforeach; ?>
                                     <?php else: ?>
