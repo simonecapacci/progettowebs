@@ -3,11 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     deleteGroupForms.forEach(form => {
         form.addEventListener('submit', event => {
-            const conferma = confirm('Vuoi davvero eliminare questo gruppo?');
+            event.preventDefault();
 
-            if (!conferma) {
-                event.preventDefault();
-            }
+            window.showProjectConfirm('Vuoi davvero eliminare questo gruppo?')
+                .then((confirmed) => {
+                    if (confirmed) {
+                        form.submit();
+                    }
+                });
         });
     });
 });

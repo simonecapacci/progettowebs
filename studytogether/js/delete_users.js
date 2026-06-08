@@ -3,11 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     deleteUserForms.forEach(form => {
         form.addEventListener('submit', event => {
-            const conferma = confirm('Vuoi davvero eliminare questo utente?');
+            event.preventDefault();
 
-            if (!conferma) {
-                event.preventDefault();
-            }
+            window.showProjectConfirm('Vuoi davvero eliminare questo utente?')
+                .then((confirmed) => {
+                    if (confirmed) {
+                        form.submit();
+                    }
+                });
         });
     });
 });

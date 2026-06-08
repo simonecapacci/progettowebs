@@ -167,6 +167,7 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
     <?php require_once 'footer.php'; ?>             
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/script.js"></script>
+    <script src="../js/confirm_dialog.js"></script>
     <script src="../js/unsubscribed.js"></script>
 </body>
 </html>
