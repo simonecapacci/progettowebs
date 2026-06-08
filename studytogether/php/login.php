@@ -20,5 +20,5 @@ $bottomText = 'Non hai un account?';
 $bottomLink = 'signup.php';
 $bottomButton = 'Registrati';
 
-require 'base.php';
+require './template/base.php';
 ?>

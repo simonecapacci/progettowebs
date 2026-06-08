@@ -21,5 +21,5 @@ $bottomText = 'Hai già un account?';
 $bottomLink = 'login.php';
 $bottomButton = 'Accedi';
 
-require 'base.php';
+require './template/base.php';
 ?>
