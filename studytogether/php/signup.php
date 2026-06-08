@@ -2,6 +2,9 @@
 
 require_once __DIR__ . '/api/api-signup.php';
 
+
+$content_page = 'auth_page.php';
+
 $pageTitle = 'Sign Up - StudyTogether';
 
 $title = 'Registrati';
@@ -18,5 +21,5 @@ $bottomText = 'Hai già un account?';
 $bottomLink = 'login.php';
 $bottomButton = 'Accedi';
 
-require 'auth_page.php';
+require 'base.php';
 ?>
