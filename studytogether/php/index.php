@@ -57,7 +57,7 @@ require_once __DIR__ . '/bootstrap.php';
                 <div class="card-body text-center p-4">
                     <h4 class="fw-bold">Crea gruppo</h4>
                     <p class="text-muted">
-                        Crea tu un nuovo gruppo di studio per una materiaa tua scelta.
+                        Crea tu un nuovo gruppo di studio per una materia a tua scelta.
                     </p>
                 </div>
             </div>
