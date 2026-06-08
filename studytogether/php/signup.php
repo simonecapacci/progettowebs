@@ -3,9 +3,8 @@
 require_once __DIR__ . '/api/api-signup.php';
 
 
-$content_page = 'auth_page.php';
-
-$pageTitle = 'Sign Up - StudyTogether';
+$templateParams['pageTitle'] = 'Sign Up';
+$templateParams['content_page'] = './template/auth_page.php';
 
 $title = 'Registrati';
 $action = 'signup.php';

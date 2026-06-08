@@ -2,9 +2,8 @@
 
 require_once __DIR__ . '/api/api-login.php';
 
-$content_page = 'auth_page.php';
-
-$pageTitle = 'Login';
+$templateParams['content_page'] = './template/auth_page.php';
+$templateParams['pageTitle'] = 'Login';
 
 $title = 'Accedi';
 $action = 'login.php';
