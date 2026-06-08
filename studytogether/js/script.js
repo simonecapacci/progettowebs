@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('groupSearch');
   const groupItems = Array.from(document.querySelectorAll('.group-item'));
   const groupsCount = document.getElementById('groupsCount');
+  const emptyState = document.getElementById('groupsEmptyState');
 
   if (!checkboxes.length && !searchInput) {
     return;
@@ -31,6 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
         visibleCount += 1;
       }
     });
+
+    if (emptyState) {
+      emptyState.classList.toggle('d-none', visibleCount > 0);
+    }
 
     if (groupsCount) {
       groupsCount.textContent = `${visibleCount} gruppi trovati`;

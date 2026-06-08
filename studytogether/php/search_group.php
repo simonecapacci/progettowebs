@@ -70,7 +70,7 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
                                                     </label>
                                                 <?php endforeach; ?>
                                             <?php else: ?>
-
+                                                <div class="text-body-secondary small">Nessuna materia disponibile</div>
                                             <?php endif; ?>
                                         </div>
                                     </div>
@@ -91,6 +91,14 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
                 </div>
 
                 <div class="row g-3" id="groupsList">
+                    <div class="col-12 <?= empty($groups) ? '' : 'd-none' ?>" id="groupsEmptyState">
+                        <div class="card border-0 shadow-sm">
+                            <div class="card-body p-4">
+                                <h3 class="h5 mb-2">Mi spiace, la ricerca non ha prodotto risultati</h3>
+                                <p class="mb-0 text-body-secondary">Prova a cambiare il testo cercato o a togliere alcuni filtri.</p>
+                            </div>
+                        </div>
+                    </div>
                     <?php if (!empty($groups)): ?>
                         <?php foreach ($groups as $group): ?>
                             <?php $subjectName = strtolower((string) ($group['subject_name'] ?? '')); ?>
@@ -151,15 +159,6 @@ if (isset($dbh) && method_exists($dbh, 'getGroups')) {
                                 </div>
                             </div>
                         <?php endforeach; ?>
-                    <?php else: ?>
-                        <div class="col-12">
-                            <div class="card border-0 shadow-sm">
-                                <div class="card-body p-4">
-                                    <h3 class="h5">Nessun gruppo trovato</h3>
-                                    <p class="mb-0 text-body-secondary">Al momento non ci sono gruppi nel database.</p>
-                                </div>
-                            </div>
-                        </div>
                     <?php endif; ?>
                 </div>
             </div>
