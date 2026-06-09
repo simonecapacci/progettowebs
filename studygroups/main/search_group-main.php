@@ -68,7 +68,7 @@
                 <section class="col-12 <?= empty($groups) ? '' : 'd-none' ?>" id="groupsEmptyState">
                     <article class="card border-0 shadow-sm">
                         <div class="card-body p-4">
-                            <h3 class="h5 mb-2">Mi spiace, la ricerca non ha prodotto risultati</h3>
+                            <h3 class="h5 mb-2">Mi dispiace, la ricerca non ha prodotto risultati</h3>
                             <p class="mb-0 text-body-secondary">Prova a cambiare il testo cercato o a togliere alcuni filtri.</p>
                         </div>
                     </article>
