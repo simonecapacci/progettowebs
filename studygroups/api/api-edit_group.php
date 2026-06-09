@@ -13,11 +13,6 @@ if ($groupId <= 0) {
     exit;
 }
 
-function h(string $value): string
-{
-    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['edit_group_id'])) {
     $name = trim($_POST['group_name'] ?? '');
     $description = trim($_POST['group_description'] ?? '');

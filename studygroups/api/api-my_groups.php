@@ -7,12 +7,6 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $navbarType = 'user';
-
-function h(string $value): string
-{
-    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-}
-
 $username = $_SESSION['username'];
 $userId = $_SESSION['user_id'];
 $createdGroups = $dbh->getGroupsByUsername($username);

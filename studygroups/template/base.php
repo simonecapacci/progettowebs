@@ -1,8 +1,4 @@
 <?php
-if (!isset($pageTitle)) {
-    $pageTitle = 'StudyGroups';
-}
-
 if (isset($_SESSION['user_id'])) {
     $navbarType = ($_SESSION['role'] === 'admin') ? 'admin' : 'user';
 } else {
@@ -16,7 +12,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($templateParams['pageTitle']) ?> - StudyGroups</title>
+    <title><?= h($templateParams['pageTitle']) ?> - StudyGroups</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
@@ -75,7 +71,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                     <section class="ms-auto mt-3 mt-lg-0" aria-label="Menu utente">
                         <div class="dropdown">
                             <button class="btn btn-light rounded-pill px-4 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?= htmlspecialchars($_SESSION['username']) ?>
+                                <?= h($_SESSION['username']) ?>
                             </button>
 
                             <ul class="dropdown-menu dropdown-menu-lg-end">

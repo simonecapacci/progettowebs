@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_id']) && !in_array($currentPage, $publicPages, true))
     header('Location: index.php');
     exit;
 }
-
+require_once(__DIR__ . '/utils/functions.php');
 require_once __DIR__ . "/db/database.php";
 
 $dbh = new DatabaseHelper("localhost", "root", "", "studytogether", 1104);

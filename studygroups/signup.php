@@ -1,7 +1,5 @@
 <?php
-
 require_once __DIR__ . '/api/api-signup.php';
-
 
 $templateParams['pageTitle'] = 'Sign Up';
 $templateParams['content_page'] = './template/auth_card.php';

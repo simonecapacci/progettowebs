@@ -8,19 +8,19 @@
 
                     <header>
                         <h2 class="text-center fw-bold mb-4">
-                            <?= htmlspecialchars($templateParams['title']) ?>
+                            <?= h($templateParams['title']) ?>
                         </h2>
                     </header>
 
                     <?php if ($success !== null): ?>
                         <div class="alert alert-success">
-                            <?= htmlspecialchars($success) ?>
+                            <?= h($success) ?>
                         </div>
                     <?php endif; ?>
 
                     <?php if ($error !== null): ?>
                         <div class="alert alert-danger">
-                            <?= htmlspecialchars($error) ?>
+                            <?= h($error) ?>
                         </div>
                     <?php endif; ?>
 
@@ -29,12 +29,12 @@
                     <hr>
 
                     <p class="text-center mb-0">
-                        <?= htmlspecialchars($templateParams['bottomText']) ?>
+                        <?= h($templateParams['bottomText']) ?>
                     </p>
 
-                    <a href="<?= htmlspecialchars($templateParams['bottomLink']) ?>"
+                    <a href="<?= h($templateParams['bottomLink']) ?>"
                     class="btn btn-outline-primary w-100 mt-2">
-                        <?= htmlspecialchars($templateParams['bottomButton']) ?>
+                        <?= h($templateParams['bottomButton']) ?>
                     </a>
 
                 </div>
