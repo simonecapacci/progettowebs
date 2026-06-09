@@ -3,12 +3,14 @@
     <div class="row justify-content-center">
         <div class="col-12 col-sm-10 col-md-7 col-lg-5 col-xl-4">
 
-            <div class="card shadow-sm border-0">
+            <section class="card shadow-sm border-0">
                 <div class="card-body p-4">
 
-                    <h2 class="text-center fw-bold mb-4">
-                        <?= htmlspecialchars($title) ?>
-                    </h2>
+                    <header>
+                        <h2 class="text-center fw-bold mb-4">
+                            <?= htmlspecialchars($title) ?>
+                        </h2>
+                    </header>
 
                     <?php if ($success !== null): ?>
                         <div class="alert alert-success">
@@ -36,7 +38,7 @@
                     </a>
 
                 </div>
-            </div>
+            </section>
 
         </div>
     </div>

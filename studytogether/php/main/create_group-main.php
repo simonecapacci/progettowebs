@@ -1,12 +1,12 @@
 <main class="container py-4 py-lg-5 flex-grow-1">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-10 col-xl-8">
-                <div class="card border-0 shadow-sm overflow-hidden">
-                    <div class="card-header bg-info text-white border-0 py-4" style="background: linear-gradient(135deg, #1d4ed8 0%, #60a5fa 100%); color: #fff;">
+                <section class="card border-0 shadow-sm overflow-hidden">
+                    <header class="card-header bg-info text-white border-0 py-4" style="background: linear-gradient(135deg, #1d4ed8 0%, #60a5fa 100%); color: #fff;">
                         <p class="text-uppercase fw-semibold small mb-2">Nuovo gruppo</p>
                         <h2 class="h3 mb-2">Crea un gruppo di studio</h2>
                         <p class="mb-0">Raccogli in un unico posto nome, materia, descrizione e appuntamento.</p>
-                    </div>
+                    </header>
 
                     <div class="card-body p-4 p-lg-5">
                         <form method="post" action="" class="row g-3">
@@ -49,7 +49,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </section>
             </div>
         </div>
 </main>

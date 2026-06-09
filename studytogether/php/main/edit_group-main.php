@@ -2,16 +2,16 @@
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8">
 
-                <div class="mb-4">
+                <nav class="mb-4" aria-label="Navigazione area admin">
                     <a href="admin_home.php" class="btn btn-outline-secondary btn-sm">
                         Torna all'area admin
                     </a>
-                </div>
+                </nav>
 
-                <div class="card shadow-sm border-0 mb-4">
-                    <div class="card-header text-white fw-bold py-3" style="background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);">
+                <section class="card shadow-sm border-0 mb-4">
+                    <header class="card-header text-white fw-bold py-3" style="background: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);">
                         Modifica gruppo
-                    </div>
+                    </header>
 
                     <div class="card-body p-4">
                         <form method="POST">
@@ -44,22 +44,22 @@
                             </button>
                         </form>
                     </div>
-                </div>
+                </section>
 
-                <div class="card shadow-sm border-0 mb-4">
-                    <div class="card-header bg-light fw-bold py-3">
+                <section class="card shadow-sm border-0 mb-4">
+                    <header class="card-header bg-light fw-bold py-3">
                         Iscritti al gruppo
-                    </div>
+                    </header>
 
                     <div class="card-body p-0">
-                        <div class="list-group list-group-flush">
+                        <section class="list-group list-group-flush">
                             <?php if (empty($subscribers)): ?>
                                 <div class="list-group-item text-secondary py-3">
                                     Nessun iscritto a questo gruppo.
                                 </div>
                             <?php else: ?>
                                 <?php foreach ($subscribers as $subscriber): ?>
-                                    <div class="list-group-item py-3">
+                                    <article class="list-group-item py-3">
                                         <div class="fw-semibold">
                                             <?= h($subscriber['username']) ?>
                                         </div>
@@ -67,17 +67,17 @@
                                         <div class="text-secondary small">
                                             <?= h($subscriber['email'] ?? 'Email non disponibile') ?>
                                         </div>
-                                    </div>
+                                    </article>
                                 <?php endforeach; ?>
                             <?php endif; ?>
-                        </div>
+                        </section>
                     </div>
-                </div>
+                </section>
 
-                <div class="card shadow-sm border-0">
-                    <div class="card-header bg-danger text-white fw-bold py-3">
+                <section class="card shadow-sm border-0">
+                    <header class="card-header bg-danger text-white fw-bold py-3">
                         Elimina gruppo
-                    </div>
+                    </header>
 
                     <div class="card-body p-4">
                         <p class="text-secondary">
@@ -92,7 +92,7 @@
                             </button>
                         </form>
                     </div>
-                </div>
+                </section>
 
             </div>
         </div>

@@ -72,7 +72,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                 </ul>
 
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <div class="ms-auto mt-3 mt-lg-0">
+                    <section class="ms-auto mt-3 mt-lg-0" aria-label="Menu utente">
                         <div class="dropdown">
                             <button class="btn btn-light rounded-pill px-4 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?= htmlspecialchars($_SESSION['username']) ?>
@@ -84,7 +84,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </section>
                 <?php endif; ?>
             </div>
         </div>

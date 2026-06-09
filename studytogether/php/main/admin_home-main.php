@@ -1,13 +1,13 @@
 <main class="container py-4 py-md-5 flex-grow-1">
         <div class="row justify-content-center">
             <div class="col-12 col-xl-10">
-                <div class="card shadow-sm border-0">
+                <section class="card shadow-sm border-0">
                     <div class="card-body p-3 p-md-4">
-                        <div class="mb-4">
+                        <header class="mb-4">
                             <p class="text-uppercase text-primary fw-semibold small mb-1">Area amministratore</p>
                             <h1 class="h3 mb-2">Gestione utenti e gruppi</h1>
                             <p class="text-secondary mb-0">Seleziona una scheda per vedere solo la lista desiderata.</p>
-                        </div>
+                        </header>
 
                         <ul class="nav nav-tabs admin-tabs mb-4" id="adminTabs" role="tablist">
                             <li class="nav-item" role="presentation">
@@ -23,11 +23,11 @@
                         </ul>
 
                         <div class="tab-content" id="adminTabsContent">
-                            <div class="tab-pane fade show active" id="groups-pane" role="tabpanel" aria-labelledby="groups-tab" tabindex="0">
-                                <div class="list-group list-group-flush">
+                            <section class="tab-pane fade show active" id="groups-pane" role="tabpanel" aria-labelledby="groups-tab" tabindex="0">
+                                <section class="list-group list-group-flush">
                                     <?php if (!empty($groups)): ?>
                                         <?php foreach ($groups as $group): ?>
-                                            <div class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 py-3">
+                                            <article class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 py-3">
                                                 <div>
                                                     <div class="fw-semibold fs-5"><?= h($group['name']) ?></div>
 
@@ -50,19 +50,19 @@
                                                 class="btn btn-danger btn-sm px-3 admin-home-btn">
                                                     Modifica
                                                 </a>
-                                            </div>
+                                            </article>
                                         <?php endforeach; ?>
                                     <?php else: ?>
                                         <div class="list-group-item text-center text-secondary py-4">Nessun gruppo disponibile.</div>
                                     <?php endif; ?>
-                                </div>
-                            </div>
+                                </section>
+                            </section>
 
-                            <div class="tab-pane fade" id="users-pane" role="tabpanel" aria-labelledby="users-tab" tabindex="0">
-                                <div class="list-group list-group-flush">
+                            <section class="tab-pane fade" id="users-pane" role="tabpanel" aria-labelledby="users-tab" tabindex="0">
+                                <section class="list-group list-group-flush">
                                     <?php if (!empty($users)): ?>
                                         <?php foreach ($users as $user): ?>
-                                            <div class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 py-3">
+                                            <article class="list-group-item d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 py-3">
                                                 <div>
                                                     <div class="fw-semibold fs-5"><?= h($user['username']) ?></div>
 
@@ -86,16 +86,16 @@
                                                     </button>"
                                                     ?>
                                                 </form>
-                                            </div>
+                                            </article>
                                         <?php endforeach; ?>
                                     <?php else: ?>
                                         <div class="list-group-item text-center text-secondary py-4">Nessun utente disponibile.</div>
                                     <?php endif; ?>
-                                </div>
-                            </div>
+                                </section>
+                            </section>
                         </div>
                     </div>
-                </div>
+                </section>
             </div>
         </div>
 </main>
