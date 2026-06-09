@@ -22,7 +22,7 @@
 
                                         <?php foreach ($subjects as $subject): ?>
                                         <option value="<?= $subject['id']; ?>">
-                                        <?= htmlspecialchars($subject['name']); ?>
+                                        <?= h($subject['name']); ?>
                                         </option>
                                         <?php endforeach; ?>
 

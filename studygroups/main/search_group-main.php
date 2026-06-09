@@ -33,8 +33,8 @@
                                         <?php if (!empty($subjects)): ?>
                                             <?php foreach ($subjects as $subject): ?>
                                                 <label class="form-check d-flex align-items-center gap-2 mb-0">
-                                                    <input class="form-check-input m-0 js-subject-filter" type="checkbox" value="<?= htmlspecialchars($subject['name'], ENT_QUOTES, 'UTF-8') ?>">
-                                                    <span class="form-check-label"><?= htmlspecialchars($subject['name'], ENT_QUOTES, 'UTF-8') ?></span>
+                                                    <input class="form-check-input m-0 js-subject-filter" type="checkbox" value="<?= h($subject['name']) ?>">
+                                                    <span class="form-check-label"><?= h($subject['name']) ?></span>
                                                 </label>
                                             <?php endforeach; ?>
                                         <?php else: ?>
@@ -79,25 +79,25 @@
                         <?php $subjectName = strtolower((string) ($group['subject_name'] ?? '')); ?>
 
                         <article class="col-12 group-item"
-                                 data-name="<?= htmlspecialchars(strtolower((string) ($group['name'] ?? '')), ENT_QUOTES, 'UTF-8') ?>"
-                                 data-subject="<?= htmlspecialchars($subjectName, ENT_QUOTES, 'UTF-8') ?>">
+                                 data-name="<?= h(strtolower((string) ($group['name'] ?? ''))) ?>"
+                                 data-subject="<?= h($subjectName) ?>">
 
                             <section class="card shadow-sm border-0 group-result-card h-100">
                                 <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
 
                                     <section>
                                         <h3 class="h5 mb-2">
-                                            <?= htmlspecialchars($group['name']) ?>
+                                            <?= h($group['name']) ?>
                                         </h3>
 
                                         <p class="mb-1 text-body-secondary">
-                                            Materia: <?= htmlspecialchars($group['subject_name']) ?>
+                                            Materia: <?= h($group['subject_name']) ?>
                                         </p>
 
                                         <p class="mb-0 text-body-secondary">
-                                            <?= htmlspecialchars($group['date']) ?>
+                                            <?= h($group['date']) ?>
                                             -
-                                            <?= htmlspecialchars($group['time']) ?>
+                                            <?= h($group['time']) ?>
                                         </p>
                                     </section>
 
@@ -120,7 +120,7 @@
                                     <?php elseif ($isSubscribed): ?>
 
                                         <form method="POST" class="unsubscribe-form">
-                                            <input type="hidden" name="unsubscribe_group_id" value="<?= htmlspecialchars($group['id'], ENT_QUOTES, 'UTF-8') ?>">
+                                            <input type="hidden" name="unsubscribe_group_id" value="<?= h($group['id']) ?>">
 
                                             <button type="submit" class="btn btn-danger group-action-btn">
                                                 Disiscriviti
@@ -129,8 +129,8 @@
 
                                     <?php else: ?>
 
-                                        <form action="subscribe_group.php" method="POST" onclick="event.stopPropagation();">
-                                            <input type="hidden" name="group_id" value="<?= htmlspecialchars($group['id'], ENT_QUOTES, 'UTF-8') ?>">
+                                        <form action="api/subscribe_group.php" method="POST" onclick="event.stopPropagation();">
+                                            <input type="hidden" name="group_id" value="<?= h($group['id']) ?>">
 
                                             <button type="submit" class="btn btn-primary group-action-btn">
                                                 Iscriviti
