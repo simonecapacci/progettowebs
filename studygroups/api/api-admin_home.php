@@ -10,6 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user_id'])) {
 
     $dbh->deleteUser($userIdToDelete);
 
-    header('Location: ../admin_home.php');
+    header('Location: ./admin_home.php');
     exit;
 }
