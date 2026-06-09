@@ -5,19 +5,19 @@ require_once __DIR__ . '/api/api-login.php';
 $templateParams['content_page'] = './template/auth_card.php';
 $templateParams['pageTitle'] = 'Login';
 
-$title = 'Accedi';
-$action = 'login.php';
+$templateParams['title'] = 'Accedi';
+$templateParams['action'] = 'login.php';
 
-$showEmail = false;
+$templateParams['showEmail'] = false;
 
-$usernameValue = $identifier;
-$emailValue = '';
+$templateParams['usernameValue'] = $identifier;
+$templateParams['emailValue'] = '';
 
-$submitText = 'Accedi';
+$templateParams['submitText'] = 'Accedi';
 
-$bottomText = 'Non hai un account?';
-$bottomLink = 'signup.php';
-$bottomButton = 'Registrati';
+$templateParams['bottomText'] = 'Non hai un account?';
+$templateParams['bottomLink'] = 'signup.php';
+$templateParams['bottomButton'] = 'Registrati';
 
 require './template/base.php';
 ?>

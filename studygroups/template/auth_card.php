@@ -8,7 +8,7 @@
 
                     <header>
                         <h2 class="text-center fw-bold mb-4">
-                            <?= htmlspecialchars($title) ?>
+                            <?= htmlspecialchars($templateParams['title']) ?>
                         </h2>
                     </header>
 
@@ -29,12 +29,12 @@
                     <hr>
 
                     <p class="text-center mb-0">
-                        <?= htmlspecialchars($bottomText) ?>
+                        <?= htmlspecialchars($templateParams['bottomText']) ?>
                     </p>
 
-                    <a href="<?= htmlspecialchars($bottomLink) ?>"
+                    <a href="<?= htmlspecialchars($templateParams['bottomLink']) ?>"
                     class="btn btn-outline-primary w-100 mt-2">
-                        <?= htmlspecialchars($bottomButton) ?>
+                        <?= htmlspecialchars($templateParams['bottomButton']) ?>
                     </a>
 
                 </div>

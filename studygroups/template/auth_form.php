@@ -1,4 +1,4 @@
-<form action="<?= htmlspecialchars($action) ?>" method="post">
+<form action="<?= htmlspecialchars($templateParams['action']) ?>" method="post">
 
     <div class="mb-3">
         <label for="username" class="form-label">Username</label>
@@ -8,12 +8,12 @@
             id="username"
             name="username"
             placeholder="Username"
-            value="<?= htmlspecialchars($usernameValue, ENT_QUOTES, 'UTF-8') ?>"
+            value="<?= htmlspecialchars($templateParams['usernameValue'], ENT_QUOTES, 'UTF-8') ?>"
             required
         >
     </div>
 
-    <?php if ($showEmail): ?>
+    <?php if ($templateParams['showEmail']): ?>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input
@@ -22,7 +22,7 @@
                 id="email"
                 name="email"
                 placeholder="Email"
-                value="<?= htmlspecialchars($emailValue, ENT_QUOTES, 'UTF-8') ?>"
+                value="<?= htmlspecialchars($templateParams['emailValue'], ENT_QUOTES, 'UTF-8') ?>"
                 required
             >
         </div>
@@ -41,7 +41,7 @@
     </div>
 
     <button type="submit" class="btn btn-primary w-100">
-        <?= htmlspecialchars($submitText) ?>
+        <?= htmlspecialchars($templateParams['submitText']) ?>
     </button>
 
 </form>
